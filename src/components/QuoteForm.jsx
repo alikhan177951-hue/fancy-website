@@ -33,21 +33,20 @@ export default function QuoteForm() {
   };
 
   return (
-    <section className="section" id="quote">
+    <section className="section section--tight" id="quote">
       <div className="wrap quote-shell">
         <Reveal>
           <aside className="quote-aside">
             <p className="eyebrow">Lead / quote</p>
             <h2>Tell David what the site needs.</h2>
             <p>
-              Name, phone, email, and a short job brief. Submits via your email
-              app to {brand.email} — no fake login.
+              Name, phone, email, and a short job brief. Opens your email to{" "}
+              {brand.email}.
             </p>
+            <a className="btn btn--yellow quote-aside__call" href={`tel:${brand.phoneTel}`}>
+              Call {brand.phoneDisplay}
+            </a>
             <ul className="quote-aside__list">
-              <li>
-                <strong>Call</strong>
-                <a href={`tel:${brand.phoneTel}`}>{brand.phoneDisplay}</a>
-              </li>
               <li>
                 <strong>Email</strong>
                 <a href={`mailto:${brand.email}`}>{brand.email}</a>
@@ -137,13 +136,9 @@ export default function QuoteForm() {
               >
                 Send quote request
               </motion.button>
-              <a className="btn btn--ghost-dark" href={`tel:${brand.phoneTel}`}>
-                Or call {brand.phoneDisplay}
-              </a>
             </div>
             <p className="form-note">
-              Opens your email client with the details filled in. Prefer a call?
-              David answers {brand.phoneDisplay}.
+              Prefer a call? David answers {brand.phoneDisplay}.
             </p>
           </motion.form>
         </Reveal>

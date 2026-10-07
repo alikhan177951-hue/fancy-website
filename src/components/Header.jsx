@@ -27,8 +27,12 @@ export default function Header() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="site-header__inner">
         <a className="logo-link" href="#top" onClick={close}>
-          <img src={brand.logo} alt="" width={120} height={56} />
-          <span className="logo-text">{brand.name}</span>
+          <img
+            src={brand.logo}
+            alt="DB Bobcat and Tipper Hire"
+            width={112}
+            height={52}
+          />
         </a>
 
         <nav className="nav-desktop" aria-label="Primary">
@@ -41,6 +45,9 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          <a className="nav-call" href={`tel:${brand.phoneTel}`}>
+            Call {brand.phoneDisplay}
+          </a>
         </nav>
 
         <button
@@ -82,12 +89,18 @@ export default function Header() {
                 {item.label}
               </motion.a>
             ))}
+            <motion.a
+              className="nav-mobile__call"
+              href={`tel:${brand.phoneTel}`}
+              onClick={close}
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.4 }}
+            >
+              Call {brand.phoneDisplay}
+            </motion.a>
             <div className="nav-mobile__meta">
-              <div>
-                Call{" "}
-                <a href={`tel:${brand.phoneTel}`}>{brand.phoneDisplay}</a>
-              </div>
-              <div>{brand.addressShort}</div>
+              <div>{brand.address}</div>
             </div>
           </motion.nav>
         )}
