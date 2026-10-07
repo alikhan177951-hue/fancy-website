@@ -12,9 +12,9 @@
   --rust: #c45c26;
   --line: rgba(244, 239, 228, 0.12);
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  --sans: "Outfit", system-ui, sans-serif;
-  --display: "Syne", "Outfit", sans-serif;
-  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --display: "Archivo", "DM Sans", sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
   --max: 1180px;
   --radius: 18px;
 }
@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--sans);
-  font-weight: 380;
+  font-weight: 400;
   color: var(--paper);
   background: var(--bg);
   line-height: 1.55;
@@ -66,13 +66,14 @@ a { color: inherit; }
 
 h1, h2, h3 {
   font-family: var(--display);
-  font-weight: 750;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  word-spacing: 0.06em;
+  line-height: 1.08;
   margin: 0 0 0.7rem;
 }
 
-h1 { font-size: clamp(2.4rem, 7vw, 5.4rem); }
+h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); }
 h2 { font-size: clamp(1.8rem, 4vw, 3.1rem); }
 h3 { font-size: 1.25rem; }
 
@@ -199,12 +200,15 @@ h1 em {
 }
 .hero-shade {
   background:
-    linear-gradient(180deg, rgba(12,11,9,0.15) 0%, rgba(12,11,9,0.35) 40%, rgba(12,11,9,0.92) 100%),
-    radial-gradient(1200px 500px at 20% 80%, rgba(228,178,60,0.18), transparent 50%);
+    linear-gradient(90deg, rgba(12,11,9,0.82) 0%, rgba(12,11,9,0.45) 55%, rgba(12,11,9,0.2) 100%),
+    linear-gradient(180deg, rgba(12,11,9,0.25) 0%, rgba(12,11,9,0.2) 35%, rgba(12,11,9,0.94) 100%),
+    radial-gradient(1200px 500px at 20% 80%, rgba(228,178,60,0.16), transparent 50%);
 }
 .hero-copy {
   position: relative;
   padding: 7rem 0 4rem;
+  max-width: 46rem;
+  text-shadow: 0 12px 40px rgba(0,0,0,0.45);
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.6rem 0 2rem; }
 .hero-meta {
@@ -492,7 +496,7 @@ blockquote footer { margin-top: 1rem; color: var(--muted); font-size: 0.85rem; }
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(8, 7, 6, 0.94);
+  background: rgba(8, 7, 6, 0.96);
   z-index: 80;
   display: grid;
   place-items: center;
