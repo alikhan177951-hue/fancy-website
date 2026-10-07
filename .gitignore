@@ -2,5 +2,8 @@ node_modules/
 .sitemd/
 sitemd/site/
 client-scrapes/
+dist-ssr/
 *.log
 .DS_Store
+.vite/
+.artifacts/
