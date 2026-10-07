@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /speedy-phils-bobcat-tipper/
+
+Sitemap: https://kaamtasker.com/speedy-phils-bobcat-tipper/sitemap.xml
