@@ -7,35 +7,37 @@ Owner-operator David. Contacts and services from the live brief — nothing inve
 ## Stack
 
 - Vite + React (`base: /bobcatbob/`)
-- Framer Motion — scroll-scrubbed Mixkit video hero (`useScroll` → `video.currentTime` + crossfade)
-- Brand palette from the DB logo: blue `#0064d8` + yellow `#fcfc64` (dark text `#0b1a2e` on yellow CTAs)
+- Framer Motion — **one** Mixkit tipper dump, scroll-scrubbed (`useScroll` → `video.currentTime`)
+- Brand: blue `#0064d8` + yellow `#fcfc64` (dark text `#0b1a2e` on yellow CTAs)
 
-## Hero (realistic video, not SVG)
+## Hero — Path A (single 10327 scrub)
 
-Sticky full-bleed construction footage scrubbed as you scroll. Video URLs use the Vite base: `/bobcatbob/videos/…`.
+One continuous tipper-dumping sequence. **Not** a multi-clip photo swap.
 
-| Beat | Progress | Clip |
-|------|----------|------|
-| Enter | 0–20% | `truck-enter-45816.mp4` |
-| Scoop / load | 20–50% | `scoop-load-49189.mp4` |
-| Tip / unload | 50–80% | `unload-dump-10327.mp4` |
-| Settle + CTA | 80–100% | hold dump frame; Call / Get a quote stay on hero |
+| Beat | Progress | Action |
+|------|----------|--------|
+| Establish | 0–15% | Site / trucks in frame |
+| Tip / soil cascade | 15–75% | Tipper dumping |
+| Settle + CTA | 75–100% | Hold end; Call / Get a quote |
 
-Poster underlays + overlapping crossfades keep a tipper frame visible for the whole pin (no blue void). Assets in `public/videos/` under the **Mixkit Free Stock Video License** (commercial OK). Details: [`public/videos/LICENSE.md`](public/videos/LICENSE.md).
+- Video: `/bobcatbob/videos/unload-dump-10327.mp4` ([Mixkit 10327](https://mixkit.co/free-stock-video/trucks-dumping-dirt-on-a-construction-site-10327/))
+- Single `<video>` — src never swaps
+- Poster underlay — no blue void
+- License: [`public/videos/LICENSE.md`](public/videos/LICENSE.md)
 
-Do **not** reintroduce a cartoon SVG tipper for this hero.
+No cartoon SVG tipper. No stitched multi-scene slideshow.
 
 ## Page sections
 
-1. **Hero + scroll video** — brand, headline, one yellow Call + Get a quote
-2. **Services** — compact list
-3. **About / areas** — short owner blurb + western Melbourne tags
-4. **Quote form** — lead gen + Call CTA
-5. **Footer** — no floating duplicate Call
+1. Hero + tip scrub  
+2. Services  
+3. About / areas  
+4. Quote lead form  
+5. Footer (no floating duplicate Call)
 
 ## Deploy
 
-SFTP the contents of `dist/` into `public_html/kaamtasker.com/bobcatbob/`.
+SFTP `dist/` into `public_html/kaamtasker.com/bobcatbob/`.
 
 ```bash
 npm install
