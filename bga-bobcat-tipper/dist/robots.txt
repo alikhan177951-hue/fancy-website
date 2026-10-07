@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /bga-bobcat-tipper/
+
+Sitemap: https://kaamtasker.com/bga-bobcat-tipper/sitemap.xml
