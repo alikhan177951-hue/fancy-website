@@ -357,8 +357,13 @@ h3 {
 }
 
 .nav-mobile {
+  /* Header has backdrop-filter → fixed children are contained by it,
+     so give the panel an explicit full-viewport height. */
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
   z-index: 105;
   background:
     linear-gradient(160deg, rgba(61, 41, 20, 0.98), rgba(10, 10, 10, 0.99)),
