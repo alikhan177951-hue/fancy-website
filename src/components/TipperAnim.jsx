@@ -447,15 +447,22 @@ export default function TipperAnim() {
             </motion.g>
 
             <motion.g style={{ opacity: labelOpacity }}>
+              <rect
+                x="300"
+                y="378"
+                width="300"
+                height="28"
+                rx="8"
+                fill="rgba(6, 42, 92, 0.55)"
+              />
               <text
                 x="450"
-                y="395"
+                y="397"
                 textAnchor="middle"
-                fill="#062a5c"
+                fill="#fcfc64"
                 fontFamily="Outfit, Segoe UI, sans-serif"
                 fontSize="13"
                 fontWeight="600"
-                opacity="0.7"
               >
                 Scroll to watch the tipper scoop &amp; tip
               </text>
