@@ -20,12 +20,12 @@ One continuous tipper-dumping sequence. **Not** a multi-clip photo swap.
 | Tip / soil cascade | 15–75% | Tipper dumping |
 | Settle + CTA | 75–100% | Hold end; Call / Get a quote |
 
-- Video: `/bobcatbob/videos/unload-dump-10327.mp4` ([Mixkit 10327](https://mixkit.co/free-stock-video/trucks-dumping-dirt-on-a-construction-site-10327/))
-- Single `<video>` — src never swaps
-- Poster underlay — no blue void
+- Scrub file: `/bobcatbob/videos/tipper-10327-scrub.mp4` (dense-keyframe re-encode of [Mixkit 10327](https://mixkit.co/free-stock-video/trucks-dumping-dirt-on-a-construction-site-10327/))
+- Single `<video>` — src never swaps; `currentTime` driven by scroll
+- Safari unlock on first wheel/touch; metadata gate before seek
 - License: [`public/videos/LICENSE.md`](public/videos/LICENSE.md)
 
-No cartoon SVG tipper. No stitched multi-scene slideshow.
+No cartoon SVG tipper. No multi-clip crossfade.
 
 ## Page sections
 

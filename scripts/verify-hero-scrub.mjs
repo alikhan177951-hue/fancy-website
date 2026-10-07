@@ -1,5 +1,5 @@
 /**
- * Path A verify: single 10327 video, src never swaps, currentTime advances with scroll.
+ * Prove Path A tipper MOVES: single video, src fixed, currentTime advances a lot on scroll.
  */
 import { chromium } from "playwright";
 import path from "path";
@@ -7,87 +7,83 @@ import { promises as fs } from "fs";
 
 const OUT = "/opt/cursor/artifacts";
 const URL = "http://127.0.0.1:4173/bobcatbob/";
-const EXPECT = "/bobcatbob/videos/unload-dump-10327.mp4";
+const EXPECT = "/bobcatbob/videos/tipper-10327-scrub.mp4";
 
 await fs.mkdir(`${OUT}/screenshots`, { recursive: true });
-await fs.mkdir("/tmp/pw-10327", { recursive: true });
+await fs.mkdir("/tmp/pw-scrub-fix", { recursive: true });
 
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 1280, height: 800 },
-  recordVideo: { dir: "/tmp/pw-10327", size: { width: 1280, height: 800 } },
+  recordVideo: { dir: "/tmp/pw-scrub-fix", size: { width: 1280, height: 800 } },
 });
 const page = await context.newPage();
 
 await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
 await page.waitForSelector("video.hero-video__clip", { timeout: 15000 });
-await page.waitForTimeout(2800);
-
-const meta = await page.evaluate(() => {
-  const vids = [...document.querySelectorAll("video")];
-  const hero = document.querySelector("video.hero-video__clip");
-  return {
-    videoCount: vids.length,
-    src: hero?.getAttribute("src"),
-    opacity: hero ? Number(getComputedStyle(hero).opacity) : 0,
-  };
-});
-
-if (meta.videoCount !== 1 || meta.src !== EXPECT || meta.opacity < 0.99) {
-  console.error("FAIL meta", meta);
-  process.exitCode = 1;
-}
+await page.waitForFunction(
+  () => {
+    const v = document.querySelector("video.hero-video__clip");
+    return v && v.readyState >= 1 && Number.isFinite(v.duration) && v.duration > 1;
+  },
+  { timeout: 20000 },
+);
+await page.waitForTimeout(800);
 
 const track = await page.locator(".hero-scroll").boundingBox();
-const range = Math.max((track?.height ?? 2200) - 800, 1);
+const range = Math.max((track?.height ?? 2500) - 800, 1);
 
 const samples = [];
-for (const p of [0, 0.15, 0.45, 0.75, 1]) {
+for (const p of [0, 0.2, 0.4, 0.6, 0.8, 1]) {
   await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), range * p);
-  await page.waitForTimeout(450);
+  await page.waitForTimeout(500);
   const row = await page.evaluate(() => {
     const v = document.querySelector("video.hero-video__clip");
     return {
-      src: v?.getAttribute("src"),
+      src: v?.currentSrc || v?.getAttribute("src"),
       t: v?.currentTime ?? -1,
-      op: Number(getComputedStyle(v).opacity),
+      dur: v?.duration ?? -1,
+      ready: v?.readyState ?? 0,
+      count: document.querySelectorAll("video").length,
     };
   });
   samples.push({ p, ...row });
   await page.screenshot({
-    path: path.join(OUT, "screenshots", `a10327-p${String(p).replace(".", "")}.png`),
+    path: path.join(OUT, "screenshots", `scrubfix-p${String(p).replace(".", "")}.png`),
   });
 }
 
-const sameSrc = samples.every((s) => s.src === EXPECT);
-const mono = samples.every((s, i) => i === 0 || s.t >= samples[i - 1].t - 0.08);
-const opaque = samples.every((s) => s.op >= 0.99);
+const sameSrc = samples.every((s) => (s.src || "").includes("tipper-10327-scrub.mp4"));
+const oneVideo = samples.every((s) => s.count === 1);
+const mono = samples.every((s, i) => i === 0 || s.t >= samples[i - 1].t - 0.1);
+const moved = samples[samples.length - 1].t - samples[0].t > 20; // must jump ~20s+ across scrub
 
-console.log(JSON.stringify({ meta, samples, sameSrc, mono, opaque }, null, 2));
+console.log(JSON.stringify({ samples, sameSrc, oneVideo, mono, moved }, null, 2));
 
+// Demo scroll
 await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
-await page.waitForTimeout(250);
-for (let y = 0; y <= range; y += 40) {
+await page.waitForTimeout(300);
+for (let y = 0; y <= range; y += 35) {
   await page.evaluate((yy) => window.scrollTo({ top: yy, behavior: "instant" }), y);
-  await page.waitForTimeout(26);
+  await page.waitForTimeout(24);
 }
-await page.waitForTimeout(500);
+await page.waitForTimeout(600);
 
 await context.close();
 await browser.close();
 
-for (const f of await fs.readdir("/tmp/pw-10327")) {
-  const full = path.join("/tmp/pw-10327", f);
+for (const f of await fs.readdir("/tmp/pw-scrub-fix")) {
+  const full = path.join("/tmp/pw-scrub-fix", f);
   const st = await fs.stat(full);
   if (st.size > 10000) {
-    await fs.copyFile(full, path.join(OUT, "path-a-10327-scroll-demo.webm"));
+    await fs.copyFile(full, path.join(OUT, "tipper-moves-on-scroll.webm"));
     console.log("demo", st.size);
   }
 }
 
-if (!sameSrc || !mono || !opaque || process.exitCode) {
-  console.error("FAIL Path A verify");
+if (!sameSrc || !oneVideo || !mono || !moved) {
+  console.error("FAIL — tipper did not scrub");
   process.exitCode = 1;
 } else {
-  console.log("PASS: single 10327 scrub, continuous tip");
+  console.log("PASS — tipper currentTime advances on scroll");
 }

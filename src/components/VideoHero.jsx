@@ -1,55 +1,51 @@
-import { useEffect, useRef } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { BASE, brand, hero } from "../data";
 
 /**
- * Path A — ONE Mixkit tipper dump, scroll-scrubbed (no src swaps, no slideshow).
+ * Path A — ONE Mixkit tipper dump, scroll-scrubbed.
  *
- * Clip: trucks dumping dirt on a construction site (Mixkit 10327)
+ * Source (dense-keyframe re-encode of Mixkit 10327 for reliable seek paint):
+ *   /bobcatbob/videos/tipper-10327-scrub.mp4
+ * Original plate: unload-dump-10327.mp4
  *   https://mixkit.co/free-stock-video/trucks-dumping-dirt-on-a-construction-site-10327/
- *   /bobcatbob/videos/unload-dump-10327.mp4
- * License: public/videos/LICENSE.md (Free Stock Video License, commercial OK)
  *
- * Scroll → video.currentTime (single <video>, never swap src):
- *   0–15%   establish site / trucks
+ * Scroll → ONE video.currentTime (never swap src):
+ *   0–15%   establish
  *   15–75%  tip / soil cascade
- *   75–100% settle + yellow Call CTA
+ *   75–100% settle + yellow Call
  *
- * Poster underlay prevents blue void. No cartoon SVG. No multi-clip crossfade.
+ * Production fix: native scroll progress (not only Framer useScroll), wait for
+ * metadata, unlock decode on first user scroll (Safari), dense keyframes so
+ * seeks paint new frames. Poster hides once the first scrub frame paints.
  */
-const SRC = `${BASE}/videos/unload-dump-10327.mp4`;
+const SRC = `${BASE}/videos/tipper-10327-scrub.mp4`;
 const POSTER = `${BASE}/videos/poster-tipper.jpg`;
 
-function scrubTo(video, local01) {
-  if (!video || !Number.isFinite(video.duration) || video.duration <= 0) return;
-  const next = Math.min(Math.max(local01, 0), 0.999) * video.duration;
-  if (Math.abs(video.currentTime - next) > 0.03) {
-    try {
-      video.currentTime = next;
-    } catch {
-      /* seek before metadata */
-    }
-  }
+function trackProgress(track) {
+  if (!track) return 0;
+  const rect = track.getBoundingClientRect();
+  const total = track.offsetHeight - window.innerHeight;
+  if (total <= 1) return 0;
+  return Math.min(1, Math.max(0, -rect.top / total));
 }
 
 async function unlockVideo(video) {
-  if (!video) return;
+  if (!video || video.dataset.unlocked === "1") return;
   video.muted = true;
+  video.defaultMuted = true;
   video.playsInline = true;
+  video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
   try {
-    await video.play();
+    // Safari often won't paint seeked frames until play() has succeeded once.
+    const p = video.play();
+    if (p && typeof p.then === "function") await p;
     video.pause();
+    video.dataset.unlocked = "1";
   } catch {
-    /* poster still covers */
+    /* retry on first user gesture */
   }
 }
 
@@ -57,34 +53,88 @@ export default function VideoHero() {
   const reduce = useReducedMotion();
   const trackRef = useRef(null);
   const videoRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start start", "end end"],
-  });
-
-  const smooth = useSpring(scrollYProgress, {
-    stiffness: 110,
-    damping: 32,
-    restDelta: 0.001,
-  });
-  const progress = reduce ? scrollYProgress : smooth;
-  const hintFade = useTransform(scrollYProgress, [0, 0.1, 0.22], [0.9, 0.55, 0]);
+  const readyRef = useRef(false);
+  const pendingRef = useRef(0);
+  const rafRef = useRef(0);
+  const [hintOpacity, setHintOpacity] = useState(0.9);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    el.muted = true;
-    el.playsInline = true;
-    el.preload = "auto";
-    unlockVideo(el).then(() => scrubTo(el, 0));
-  }, []);
+    if (reduce) return undefined;
 
-  useMotionValueEvent(progress, "change", (p) => {
-    if (reduce) return;
-    // One continuous timeline: establish → tip cascade → settle.
-    scrubTo(videoRef.current, p);
-  });
+    const track = trackRef.current;
+    const video = videoRef.current;
+    if (!track || !video) return undefined;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("muted", "");
+
+    const applyScrub = (p) => {
+      pendingRef.current = p;
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        const el = videoRef.current;
+        const progress = pendingRef.current;
+        setHintOpacity(progress < 0.08 ? 0.9 : progress < 0.2 ? 0.45 : 0);
+
+        if (!el || !readyRef.current) return;
+        if (!Number.isFinite(el.duration) || el.duration <= 0) return;
+
+        const next = Math.min(Math.max(progress, 0), 0.999) * el.duration;
+        if (Math.abs(el.currentTime - next) < 0.04) return;
+
+        try {
+          el.currentTime = next;
+        } catch {
+          /* ignore seek race */
+        }
+      });
+    };
+
+    const onMeta = () => {
+      readyRef.current = true;
+      setVideoReady(true);
+      unlockVideo(video).then(() => applyScrub(trackProgress(track)));
+    };
+
+    if (video.readyState >= 1) onMeta();
+    else video.addEventListener("loadedmetadata", onMeta);
+
+    const onScrollOrResize = () => {
+      unlockVideo(video);
+      applyScrub(trackProgress(track));
+    };
+
+    // First gesture unlocks decode on strict mobile browsers.
+    const unlockOnce = () => {
+      unlockVideo(video).then(() => applyScrub(trackProgress(track)));
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
+    window.addEventListener("wheel", unlockOnce, { passive: true, once: true });
+    window.addEventListener("touchstart", unlockOnce, { passive: true, once: true });
+    window.addEventListener("pointerdown", unlockOnce, { passive: true, once: true });
+
+    // Kick once in case we're mid-page on load.
+    applyScrub(trackProgress(track));
+
+    return () => {
+      video.removeEventListener("loadedmetadata", onMeta);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      window.removeEventListener("wheel", unlockOnce);
+      window.removeEventListener("touchstart", unlockOnce);
+      window.removeEventListener("pointerdown", unlockOnce);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [reduce]);
 
   const copy = (
     <>
@@ -125,15 +175,16 @@ export default function VideoHero() {
       <div className="hero-scroll" ref={trackRef}>
         <div className="hero-scroll__sticky">
           <div className="hero-video" aria-hidden="true">
-            <img
-              className="hero-video__poster"
-              src={POSTER}
-              alt=""
-              width={1280}
-              height={720}
-              decoding="async"
-            />
-            {/* Single source only — never change src on scroll */}
+            {!videoReady && (
+              <img
+                className="hero-video__poster"
+                src={POSTER}
+                alt=""
+                width={1280}
+                height={720}
+                decoding="async"
+              />
+            )}
             <video
               ref={videoRef}
               className="hero-video__clip"
@@ -142,11 +193,6 @@ export default function VideoHero() {
               playsInline
               preload="auto"
               poster={POSTER}
-              onLoadedData={(e) => {
-                unlockVideo(e.currentTarget).then(() =>
-                  scrubTo(e.currentTarget, 0),
-                );
-              }}
             />
             <div className="hero-video__shade" />
           </div>
@@ -155,7 +201,7 @@ export default function VideoHero() {
 
           <motion.p
             className="hero-scroll-hint"
-            style={{ opacity: hintFade }}
+            style={{ opacity: hintOpacity }}
             aria-hidden="true"
           >
             Scroll to tip
