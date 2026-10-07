@@ -19,7 +19,7 @@ Sticky full-bleed construction footage scrubbed as you scroll:
 | Enter | 0–20% | `truck-enter-45816.mp4` |
 | Scoop / load | 20–50% | `scoop-load-49189.mp4` |
 | Tip / unload | 50–80% | `unload-dump-10327.mp4` |
-| Settle + CTA | 80–100% | hold dump + Call / Get a quote |
+| Settle + CTA | 80–100% | hold dump frame; Call / Get a quote stay on hero |
 
 Assets live in `public/videos/` under the **Mixkit Free Stock Video License** (commercial OK). Details: [`public/videos/LICENSE.md`](public/videos/LICENSE.md).
 

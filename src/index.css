@@ -445,6 +445,17 @@ h3 {
   pointer-events: none;
 }
 
+.hero-video__clip--enter {
+  z-index: 1;
+  opacity: 1;
+}
+
+.hero-video__clip--scoop,
+.hero-video__clip--dump {
+  z-index: 2;
+  opacity: 0;
+}
+
 .hero-video__shade {
   position: absolute;
   inset: 0;
@@ -462,7 +473,7 @@ h3 {
 .hero-copy {
   position: relative;
   z-index: 2;
-  padding: calc(var(--header-h) + 1.5rem) 0 5.5rem;
+  padding: calc(var(--header-h) + 1.5rem) 0 3.25rem;
   display: grid;
   gap: 0.85rem;
   align-content: end;
@@ -495,31 +506,6 @@ h3 {
 
 .hero .cta-row {
   margin-top: 0.35rem;
-}
-
-.hero-settle {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  padding: 0 0 clamp(1.75rem, 4vw, 2.75rem);
-  display: grid;
-  gap: 0.75rem;
-  pointer-events: none;
-}
-
-.hero-settle .cta-row {
-  pointer-events: auto;
-}
-
-.hero-settle__label {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
-  color: var(--white);
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .hero-scroll-hint {
