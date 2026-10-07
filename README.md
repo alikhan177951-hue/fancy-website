@@ -12,7 +12,7 @@ Owner-operator David. Contacts and services from the live brief — nothing inve
 
 ## Hero (realistic video, not SVG)
 
-Sticky full-bleed construction footage scrubbed as you scroll:
+Sticky full-bleed construction footage scrubbed as you scroll. Video URLs use the Vite base: `/bobcatbob/videos/…`.
 
 | Beat | Progress | Clip |
 |------|----------|------|
@@ -21,7 +21,7 @@ Sticky full-bleed construction footage scrubbed as you scroll:
 | Tip / unload | 50–80% | `unload-dump-10327.mp4` |
 | Settle + CTA | 80–100% | hold dump frame; Call / Get a quote stay on hero |
 
-Assets live in `public/videos/` under the **Mixkit Free Stock Video License** (commercial OK). Details: [`public/videos/LICENSE.md`](public/videos/LICENSE.md).
+Poster underlays + overlapping crossfades keep a tipper frame visible for the whole pin (no blue void). Assets in `public/videos/` under the **Mixkit Free Stock Video License** (commercial OK). Details: [`public/videos/LICENSE.md`](public/videos/LICENSE.md).
 
 Do **not** reintroduce a cartoon SVG tipper for this hero.
 
