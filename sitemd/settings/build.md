@@ -1,10 +1,8 @@
 ---
-# Build Settings
 port: 4747
 pagesDir: pages
 themeDir: theme
-# Write activated builds next to the repo dist/ CoS uploads to Namecheap
-outputDir: ../dist
+outputDir: site
 sitemap: true
 robots: true
 imageOptimization: false

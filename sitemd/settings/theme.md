@@ -1,8 +1,7 @@
 ---
-# Theme Settings
 defaultMode: dark
-contentWidth: 920px
-pageWidth: 1200px
-radius: 14px
+contentWidth: 1120px
+pageWidth: 1280px
+radius: 12px
 imageCorners: subtle
 ---

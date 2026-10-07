@@ -1,25 +1,13 @@
 {
-  "name": "bobcatbob-homepage",
+  "name": "bobcatbob",
   "private": true,
   "version": "1.0.0",
-  "description": "Bobcatbob homepage — sitemd project, static upload to kaamtasker.com/bobcatbob/",
-  "license": "UNLICENSED",
+  "description": "DB Bobcat and Tipper Hire — SiteMD project + static renderer for kaamtasker.com/bobcatbob/",
+  "type": "module",
   "scripts": {
-    "dev": "sitemd launch",
-    "start": "sitemd launch",
-    "preview": "sitemd launch",
-    "build": "node scripts/sitemd-build.js",
-    "build:cli": "sitemd build",
-    "deploy": "sitemd deploy",
-    "status": "sitemd status",
-    "pages": "sitemd pages",
-    "validate": "sitemd validate",
-    "seo": "sitemd seo"
-  },
-  "dependencies": {
-    "@sitemd-cc/sitemd": "0.2.2"
-  },
-  "engines": {
-    "node": ">=18"
+    "build": "node renderer/build.mjs",
+    "preview": "node renderer/preview.mjs",
+    "sitemd": "npx --yes @sitemd-cc/sitemd@0.2.2",
+    "sitemd:launch": "npx --yes @sitemd-cc/sitemd@0.2.2 launch"
   }
 }

@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('/bobcatbob/theme/fonts/inter.woff2') format('woff2');
+  src: url('/theme/fonts/inter.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/bobcatbob/theme/fonts/jetbrains-mono.woff2') format('woff2');
+  src: url('/theme/fonts/jetbrains-mono.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -30,17 +30,17 @@
 
 :root,
 [data-theme="light"] {
-  --color-bg: #f3eee4;
-  --color-bg-secondary: #ebe4d6;
-  --color-bg-tertiary: #e2d9c8;
-  --color-text: #1a1d16;
-  --color-text-secondary: #6d7366;
-  --color-text-tertiary: #8a9084;
-  --color-border: #d4c4a8;
-  --color-border-light: #e6dcc8;
-  --color-accent: #2f4a28;
-  --color-accent-hover: #243b1f;
-  --color-accent-subtle: rgba(47, 74, 40, 0.1);
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #f0f1f3;
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-border-light: #f0f1f3;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-subtle: rgba(37, 99, 235, 0.08);
   --color-code-bg: #f3f4f6;
   --color-code-text: #1f2937;
   --color-kbd-bg: #f3f4f6;
@@ -48,24 +48,24 @@
   --color-blockquote-border: #e5e7eb;
   --color-blockquote-bg: transparent;
   --color-selection: rgba(37, 99, 235, 0.15);
-  --color-header-bg: rgba(243, 238, 228, 0.88);
+  --color-header-bg: rgba(255, 255, 255, 0.85);
   --color-search-highlight: #fde68a;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] {
-  --color-bg: #12140f;
-  --color-bg-secondary: #1c2418;
-  --color-bg-tertiary: #252c20;
-  --color-text: #f3eee4;
-  --color-text-secondary: #c4bbaa;
-  --color-text-tertiary: #8a8678;
-  --color-border: rgba(201, 163, 106, 0.28);
-  --color-border-light: #2a3224;
-  --color-accent: #c9a36a;
-  --color-accent-hover: #e6d2a8;
-  --color-accent-subtle: rgba(201, 163, 106, 0.14);
+  --color-bg: #0b0b0e;
+  --color-bg-secondary: #131316;
+  --color-bg-tertiary: #1c1c21;
+  --color-text: #ececef;
+  --color-text-secondary: #9898a0;
+  --color-text-tertiary: #65656d;
+  --color-border: #26262c;
+  --color-border-light: #1c1c21;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-subtle: rgba(37, 99, 235, 0.12);
   --color-code-bg: #17171c;
   --color-code-text: #d4d4dc;
   --color-kbd-bg: #1c1c21;
@@ -73,7 +73,7 @@
   --color-blockquote-border: #26262c;
   --color-blockquote-bg: transparent;
   --color-selection: rgba(37, 99, 235, 0.25);
-  --color-header-bg: rgba(18, 20, 15, 0.9);
+  --color-header-bg: rgba(11, 11, 14, 0.85);
   --color-search-highlight: #854d0e;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -3243,32 +3243,15 @@ button:focus:not(:focus-visible) {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Bobcatbob — earth / tradie extras (subpath /bobcatbob/)
-   -------------------------------------------------------------------------- */
-
-.bb-hero {
-  padding: 1.5rem 0 2rem;
-}
-.bb-kicker {
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 0.74rem;
-  color: var(--color-accent);
-  margin: 0 0 0.8rem;
-}
-.bb-demo {
-  display: inline-block;
-  background: #3a2e16;
-  color: #e6d2a8;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-}
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+/* DB Bobcat — earth / gold overrides for sitemd trial preview */
+[data-theme="dark"] {
+  --color-bg: #0c0b09;
+  --color-bg-secondary: #161310;
+  --color-bg-tertiary: #1e1a15;
+  --color-text: #f4efe4;
+  --color-text-secondary: #b7aa96;
+  --color-accent: #e4b23c;
+  --color-accent-hover: #f0c45a;
+  --color-header-bg: rgba(12, 11, 9, 0.88);
+  --color-border: rgba(244, 239, 228, 0.12);
 }

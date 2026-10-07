@@ -1,11 +1,11 @@
 ---
-# SEO Settings
 language: en-AU
-ogImage: auto
+ogImage: /media/logo/fav-1.png
 structuredData: true
 llmsTxt: true
-markdownOutput: false
+markdownOutput: true
 allowAICrawlers: true
 indexNow: false
-orgName: Bobcatbob Bobcat And Tipper Hire
+orgName: DB Bobcat and Tipper Hire
+orgLogo: /media/logo/logo-1.png
 ---

@@ -1,5 +1,6 @@
-node_modules
-.DS_Store
-*.log
-.sitemd/secrets
+node_modules/
 .sitemd/
+sitemd/site/
+client-scrapes/
+*.log
+.DS_Store

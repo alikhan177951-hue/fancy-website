@@ -6,7 +6,7 @@
   <title>{{title}}</title>
   <meta name="description" content="{{description}}">
   {{faviconHead}}
-  <link rel="stylesheet" href="/bobcatbob/theme/styles.css">
+  <link rel="stylesheet" href="/theme/styles.css">
   {{themeStyles}}
   {{analytics}}
   {{seo}}
@@ -68,7 +68,7 @@
 
       function setFavicon(theme) {
         var el = document.getElementById('favicon');
-        if (el) el.href = '/bobcatbob/favicon-' + theme + '.svg';
+        if (el) el.href = '/favicon-' + theme + '.svg';
       }
 
       // Initialize theme — only auto-detect system preference when data-theme-auto is set
@@ -691,7 +691,7 @@
 
       function loadIndex() {
         if (_searchIndex) return Promise.resolve(_searchIndex);
-        return fetch('/bobcatbob/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
+        return fetch('/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
           _searchIndex = data;
           return data;
         });
@@ -1267,7 +1267,7 @@
       _sidebarSearchCleanup = function() { document.removeEventListener('click', onDocClick); };
 
       if (!_searchIndex) {
-        fetch('/bobcatbob/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
+        fetch('/search-index.json').then(function(r) { return r.json(); }).then(function(data) {
           _searchIndex = data;
         });
       }

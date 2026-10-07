@@ -1,38 +1,11 @@
-# sitemd
+# sitemd — DB Bobcat and Tipper Hire
 
-This project uses [sitemd](https://sitemd.cc) — a markdown-first static site builder.
+Markdown source of truth: `sitemd/pages/`. Production static export: `dist/` via `npm run build`.
 
-## Quick Start
+Deploy path: `https://kaamtasker.com/bobcatbob/` (asset prefix `/bobcatbob/`).
 
-```bash
-sitemd launch    # Start dev server at localhost:4747
-sitemd deploy    # Build and deploy to configured target
-sitemd status    # Show project overview
-sitemd help      # Full command list
-```
+## Auth limits
 
-## Project Structure
+SiteMD CLI `help` works without login. `sitemd whoami` and `sitemd auth status` both return **Not logged in**. `deploy` / `activate` need an account. This cloud agent has **no SiteMD credentials**, so we did not run a licensed CLI site export. CoS should SFTP `dist/` from the renderer.
 
-```
-sitemd/
-  pages/           Markdown pages (one .md per page)
-  settings/        Site config (YAML frontmatter in .md files)
-  theme/           HTML templates and CSS
-  media/           Images and assets
-  auth-pages/      Login, signup, forgot-password
-  account-pages/   User dashboard
-  gated-pages/     Authenticated-only content
-  site/            Built output (gitignored)
-```
-
-## Page Format
-
-Pages are markdown files with YAML frontmatter in `sitemd/pages/`. Key fields: `title`, `description`, `slug`, `groupMember` (sidebar group), `sidebarGroupShown` (which sidebar to display).
-
-## Settings
-
-Non-secret config lives in `sitemd/settings/*.md` as YAML frontmatter (meta, build, deploy, header, footer, groups, auth). Secrets (API keys, tokens) live in `.sitemd/secrets` — a flat KEY=VALUE file, managed via `sitemd secret set/list/remove`.
-
-## Documentation
-
-Full docs at [sitemd.cc/docs](https://sitemd.cc/docs)
+Hours conflict (Maps vs old website header) is documented on the live pages — confirm with David before dropping either line.

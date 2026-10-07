@@ -1,139 +1,125 @@
 ---
-title: Groundwork with grit. Landscapes that last.
-titleSuffix: none
-tabTitle: Bobcatbob | Landscaping, Excavation & Bobcat Hire — Deer Park VIC
-tabTitleSuffix: none
-description: Bobcatbob Bobcat And Tipper Hire — excavation, landscaping, turf, retaining walls, decking, paving and concreting in Deer Park and western Melbourne. Call 0412 947 967. Established around 2002.
+title: Western Melbourne earthmoving
+titleSuffix: " · DB Bobcat and Tipper Hire"
+tabTitle: DB Bobcat and Tipper Hire
+description: Owner-operated bobcat and tipper hire in Altona Meadows. Site prep, rock and soil, concrete, small demolition, and clean-up. Call David 0412 026 793.
 slug: /
 ---
 
-<div class="bb-hero">
+center:
+# Western Melbourne earthmoving, without the runaround.
 
-<p class="bb-kicker">Landscaping · Excavation · Hire</p>
+Owner-operated by David from 8 Lush Crt, Altona Meadows. Bobcat and tipper hire for site prep, rock and soil, concrete, small demolition, and a proper clean-up.
 
-**Bobcatbob Bobcat And Tipper Hire** — Deer Park’s earthmoving and landscaping crew since around 2002. Complete landscape from design to construct: synthetic turf, instant turf, retaining walls, decking, paving, concreting, excavation, and bobcat & tipper hire. Licensed, fully insured. No job too big or small.
+button: Call David 0412 026 793: tel:+61412026793 +big
+button: Get a quote: /contact +big +outline
+/center
 
-button: Call 0412 947 967: tel:+61412947967 +big +icon:phone
-button: Request a callback: /bobcatbob/#contact +outline +big
+![DB Bobcat on a western Melbourne job site](/media/gallery/aa.jpeg)
 
-| Est. ~2002 | 6am–6pm daily | Station Road |
-| Some listings note 2003 | Hours listed on AussieWeb | Deer Park VIC 3023 |
+## About
 
-</div>
+DB Bobcat and Tipper Hire is a locally owned, owner-operated excavation service. David has years in the industry and runs the job himself: site cleaning, soil and rock removal, rubbish, concrete, small demolition, and concrete cutting.
 
-{#services}
-## From concept sketches to compacted ground.
+Each site is different, so the conversation happens before the machine does. Recycling happens where it can. Tippers run from 2 tonne through to 12 tonne 6-wheelers. Site inspections for soil jobs are complimentary.
 
-Public directories describe a full landscape from design to construct. Specialities include synthetic turf, instant turf, retaining walls, decking, paving and concreting — plus excavation and machine hire.
+button: The full story: /about
 
-card: Landscape concept & design
-card-icon: pencil-ruler +color:#c9a36a
-card-text: Shape the yard before a bucket hits the dirt — layout, levels, and a buildable plan.
+## Services
 
-card: Excavation & earthmoving
-card-icon: mountain +color:#6f8f55
-card-text: Cut, fill, and prepare sites across western Melbourne. Land clearing and concrete removal.
+card: Site Preparation
+card-image: /media/gallery/site-preparation-1.jpg
+card-text: Excavation and levelling with bobcats and tippers so projects start on a clean, level site.
+card-link: View service: /services#site-preparation
 
-card: Bobcat & tipper hire
-card-icon: truck +color:#c9a36a
-card-text: Machines on the job when you need soil moved, not stories. Local hire from Deer Park.
+card: Rock Removal
+card-image: /media/gallery/rock-removal.jpg
+card-text: Safe, efficient removal of rocks of any size. Hourly hire plus floatage, or a fixed quote.
+card-link: View service: /services#rock-removal
 
-card: Retaining walls
-card-icon: layers +color:#6f8f55
-card-text: Hold the slope, reclaim usable garden, keep neighbouring ground where it belongs.
+card: Concrete Cutting
+card-image: /media/gallery/concrete-cutting.jpg
+card-text: Concrete cutters for tight areas and hard ground — old footings, slabs, and brickwork.
+card-link: View service: /services#concrete-cutting
 
-card: Synthetic & instant turf
-card-icon: sprout +color:#6f8f55
-card-text: Green that plays well in western suburbs summers — install-ready lawn, real or synthetic.
+card: Site Clean
+card-image: /media/gallery/site-clean.jpg
+card-text: Post-construction clean-up, footings to spec, tippers for spoils, and final trimming.
+card-link: View service: /services#site-clean
 
-card: Decking
-card-icon: layout-grid +color:#c9a36a
-card-text: Outdoor living platforms that sit true — from frame to finished boards.
+card: Rubbish Removal
+card-image: /media/gallery/rubbish.jpeg
+card-text: Tippers from 2 tonne to 12 tonne 6-wheelers for builders’ waste and spoils. Recycle where possible.
+card-link: View service: /services#rubbish-removal
 
-card: Paving
-card-icon: grid-3x3 +color:#c9a36a
-card-text: Paths, patios and drive approaches laid for drainage and everyday traffic.
+card: Small Demolition
+card-image: /media/gallery/small-demolition.jpg
+card-text: Sheds and other small structures, run as a one-person operation with a safety-first approach.
+card-link: View service: /services#small-demolition
 
-card: Concreting
-card-icon: square +color:#6f8f55
-card-text: Slabs, crossings and hardstand — plus concrete removal when the old pour has to go.
+card: Soil Removal
+card-image: /media/gallery/soil-removal.jpg
+card-text: Any volume, any western-Melbourne location. Complimentary site inspections to match the machine.
+card-link: View service: /services#soil-removal
 
-card: Clearing & waste
-card-icon: trash-2 +color:#c9a36a
-card-text: Land clearing and related rubbish/waste handling where the job needs a clean finish.
+card: Concrete Removal
+card-image: /media/gallery/a-8.jpeg
+card-text: Driveways, footpaths, old footings and brickwork — machinery for tight or hard areas.
+card-link: View service: /services#concrete-removal
 
-{#gallery}
-## The craft, not a fake job book.
+## Process
 
-The old bobcatbob.com.au site is an empty Apache index (cgi-bin only, dated 2020) — there are no public Bobcatbob project photos to scrape. These royalty-free images show **example landscaping and excavation styles only**. They are not photographs of Bobcatbob jobs.
+1. **Call us** — Call 0412 026 793 and talk through the earthmoving or demolition work.
+2. **Get a quote** — A detailed quote covering cost and scope. Transparency first.
+3. **Schedule the work** — Agree a date and time. Stay informed through the job.
 
-card: Example garden landscape style
-card-image: https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=70
-card-text: Royalty-free stock. Not a Bobcatbob job photo.
+## Gallery
 
-card: Example earthmoving plant
-card-image: https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=1200&q=70
-card-text: Royalty-free stock. Not a Bobcatbob job photo.
+gallery:
+  ![DB Bobcat and Tipper Hire job photo 1](/media/gallery/a-1.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 2](/media/gallery/a-2.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 3](/media/gallery/a-3.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 4](/media/gallery/a-4.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 5](/media/gallery/a-5.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 6](/media/gallery/a-6.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 7](/media/gallery/a-7.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 8](/media/gallery/a-8.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 9](/media/gallery/a-9.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 10](/media/gallery/a-10.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 11](/media/gallery/a-11.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 12](/media/gallery/a-12.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 13](/media/gallery/a-13.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 14](/media/gallery/a-14.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 15](/media/gallery/a-15.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 16](/media/gallery/a-16.jpeg)
+  ![DB Bobcat and Tipper Hire job photo 17](/media/gallery/a-17.jpeg)
 
-card: Example turf style
-card-image: https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=70
-card-text: Royalty-free stock. Not a Bobcatbob job photo.
+## Areas
 
-card: Example decking style
-card-image: https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70
-card-text: Royalty-free stock. Not a Bobcatbob job photo.
+Most of the **western side of Melbourne**. Outer areas on request.
 
-card: Example paving / hardscape style
-card-image: https://images.unsplash.com/photo-1600047509807-ba8f99d2cdbc?auto=format&fit=crop&w=1200&q=70
-card-text: Royalty-free stock. Not a Bobcatbob job photo.
+Based in or near **Altona Meadows, Laverton & Seabrook**. Maps-synced directories also list Werribee, Altona, Melton, Rockbank, Wyndham Vale, and Manor Lakes.
 
-{#about}
-## Western Melbourne ground. Twenty-plus years on the tools.
+## Google reviews (5.0)
 
-Public listings describe Bobcatbob as an excavation and landscaping business: complete landscape from design to construct, specialising in synthetic turf, instant turf, retaining walls, decking, paving and concreting. Established around 2002 (some directories say 2003), experienced, licensed and fully insured. No job too big or small.
+> Really glad i found him to demolish our front yard, excellent work ethics, hard working, good communication… pretty good price, thanks Dave!
+> — Google review · 10 Apr 2025
 
-Based on **Station Road, Deer Park VIC 3023, Australia**. Payments listed: EFTPOS and cheque. Brand domain **bobcatbob.com.au** — the historic web host is empty; this page is the current public homepage.
+> I had David do a site clean, what a gentlemen with great communication, workmanship and rates. Highly recommend.
+> — Google review · 25 Mar 2025
 
-| ~2002 | West | Insured |
-| Established | Melbourne suburbs | Licensed listings |
+> Dave was such a pleasure to work with. Came around the same day to do a quote… Arrived the next day on time… Would recommend Dave in a heartbeat…
+> — Google review · 7 Nov 2024
 
-{#areas}
-## Deer Park and the western corridor.
+> Very nice person to deal with. Open and clear communication. Prompt response. Great service. Thank you David…
+> — Google review · 25 Aug 2024
 
-Typical service area from public directories — confirm coverage when you call.
+Theme-placeholder testimonials from the old WordPress carousel are not used.
 
-Deer Park · St Albans · Derrimut · Ravenhall · Cairnlea · Albanvale · Ardeer · Melton · Werribee · Hoppers Crossing · Point Cook · Western Melbourne
+## Hours
 
-{#testimonials}
-## What a finished yard should feel like.
+**Primary (Google Maps / directories):** Monday–Saturday 8:00 am – 6:00 pm. Sunday closed.
 
-<p class="bb-demo">Sample / demo quotes — not real reviews. Oneflare showed 0 public reviews as of 7 October 2026. These lines are labelled demo copy so we do not invent star ratings or customer names as fact.</p>
+The existing website header still lists Monday–Friday 9:00 am – 7:00 pm. Confirm with David before treating either set as exclusive.
 
-> Demo: the kind of crew you want when the driveway grade has to be right the first time.
->
-> — Sample quote · not a verified review
-
-> Demo: turf down, spoil gone, fence line tidy — a western suburbs Saturday done properly.
->
-> — Sample quote · not a verified review
-
-> Demo: bobcat and tipper on site without the circus. Call the number, get the machine.
->
-> — Sample quote · not a verified review
-
-{#contact}
-## Phone first. There is no public email inbox.
-
-Directories checked 7 October 2026 (Oneflare, AussieWeb, AtoZ, MisterWhat) did not list a public email. **Do not write to a guessed address.** Call during listed hours.
-
-**0412 947 967** · `tel:+61412947967`
-
-- Hours: 06:00–18:00 daily (AussieWeb listing)
-- Address: Station Road, Deer Park VIC 3023, Australia
-- Payments listed: EFTPOS, cheque
-- Brand domain: bobcatbob.com.au
-- Live URL: https://kaamtasker.com/bobcatbob/
-
-There is no webhook and no fake mailbox on this form. Use the phone button to complete an enquiry.
-
-button: Call 0412 947 967 now: tel:+61412947967 +big +icon:phone
+button: Call David: tel:+61412026793 +big
