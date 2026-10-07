@@ -6,12 +6,12 @@ export default function AboutAreas() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section section--tight" id="about">
+    <section className="section band band--dark" id="about">
       <div className="wrap about-areas">
         <Reveal>
           <div>
             <p className="eyebrow">About · areas</p>
-            <h2>A1 Plus — Melton and the west.</h2>
+            <h2 className="frame-heading frame-heading--light">A1 Plus — Melton and the west.</h2>
             <p className="lead">
               Owner-operated bobcat work from {brand.addressShort} — {stats}.
               From pre-construction site cleans to slab back fill and yard dig
