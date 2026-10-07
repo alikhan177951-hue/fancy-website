@@ -6,48 +6,29 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section" id="services">
+    <section className="section section--tight" id="services">
       <div className="wrap">
-        <div className="services-head">
-          <Reveal>
+        <Reveal>
+          <div className="services-head">
             <div>
               <p className="eyebrow">Services</p>
-              <h2>What rolls through the gate.</h2>
+              <h2>Bobcat & tipper work, done properly.</h2>
             </div>
-          </Reveal>
-          <Reveal delay={0.08}>
             <p className="lead">
-              Competitive pricing and packages to match the block. Call for
-              hourly hire, floatage, or a fixed quote.
+              Hourly hire, floatage, or a fixed quote — call David for the fit.
             </p>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
 
-        <Stagger className="service-grid">
+        <Stagger className="service-list">
           {services.map((service) => (
             <motion.article
               key={service.slug}
-              className="service-card"
+              className="service-row"
               variants={reduce ? undefined : staggerItem}
-              whileHover={
-                reduce
-                  ? undefined
-                  : { y: -6, transition: { duration: 0.25 } }
-              }
             >
-              <div className="service-card__media">
-                <motion.img
-                  src={service.image}
-                  alt=""
-                  loading="lazy"
-                  whileHover={reduce ? undefined : { scale: 1.06 }}
-                  transition={{ duration: 0.45 }}
-                />
-              </div>
-              <div className="service-card__body">
-                <h3>{service.title}</h3>
-                <p>{service.summary}</p>
-              </div>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
             </motion.article>
           ))}
         </Stagger>

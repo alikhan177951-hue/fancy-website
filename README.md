@@ -1,37 +1,33 @@
 # DB Bobcat and Tipper Hire
 
-Premium **Vite + React + Framer Motion** rebuild of [dbbobcatandtipperhire.com.au](https://dbbobcatandtipperhire.com.au) for **https://kaamtasker.com/bobcatbob/**.
+Short **Vite + React + Framer Motion** site for **https://kaamtasker.com/bobcatbob/**.
 
-Owner-operator David. Contacts, services, process, areas, Google review quotes, and job photos come from the scrape / BRIEF — nothing invented.
+Owner-operator David. Contacts and services from the live brief — nothing invented.
 
 ## Stack
 
-- Vite + React
-- Framer Motion (hero entrance, scroll reveals, hover, lightbox; respects `prefers-reduced-motion`)
-- Brand theme from the DB logo: royal blue `#0064d8` + yellow `#fcfc64` (dark text on yellow CTAs)
+- Vite + React (`base: /bobcatbob/`)
+- Framer Motion — scroll-driven tipper animation (`useScroll` / `useTransform`), section reveals
+- Brand palette from the DB logo: blue `#0064d8` + yellow `#fcfc64` (dark text on yellow CTAs)
 
-## What to upload
+## Page sections
+
+1. **Hero** — brand logo, headline, one Call CTA + Get a quote
+2. **Tipper scroll anim** — sticky SVG tipper scoops soil then tips as you scroll
+3. **Services** — compact list
+4. **About / areas** — short owner blurb + western Melbourne tags
+5. **Quote form** — lead gen + Call CTA
+6. **Footer**
+
+## Deploy
 
 SFTP the contents of `dist/` into `public_html/kaamtasker.com/bobcatbob/`.
-
-Assets are prefixed `/bobcatbob/`. Rebuild with:
 
 ```bash
 npm install
 npm run build
-```
-
-Local preview (serves `dist/` at the production subpath):
-
-```bash
 npm run preview
 # http://127.0.0.1:4173/bobcatbob/
-```
-
-Dev server:
-
-```bash
-npm run dev
 ```
 
 ## Brand facts
@@ -40,6 +36,4 @@ npm run dev
 - dbbobcat@optusnet.com.au
 - 8 Lush Crt (Ct), Altona Meadows VIC 3028
 - ABN 53 138 642 412 / ACN 138 642 412
-- Hours: Maps Mon–Sat 8am–6pm, Sunday closed
-
-Gallery is `a-1`–`a-17` plus on-site job photos. Wikimedia-looking stock is not used.
+- Hours: Mon–Sat 8am–6pm, Sunday closed
