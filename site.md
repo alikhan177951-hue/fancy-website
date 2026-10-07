@@ -10,6 +10,8 @@ Lead capture: quote form on home `#quote` and contact (name, phone, email, job d
 
 Motion: CSS entrance + IntersectionObserver scroll reveals on logo/hero/services/gallery/CTAs; respects `prefers-reduced-motion`.
 
+Contrast hard rule: never light/white text on yellow or light fills — yellow CTAs always use near-black (`--yellow-ink`). Footer link styles must not override `.btn-gold`.
+
 ## Auth limits
 
 SiteMD CLI `help` works without login. `sitemd whoami` and `sitemd auth status` both return **Not logged in**. `deploy` / `activate` need an account. This cloud agent has **no SiteMD credentials**, so we did not run a licensed CLI site export. CoS should SFTP `dist/` from the renderer.

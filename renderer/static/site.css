@@ -126,13 +126,24 @@ h1 em {
 }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
-.btn-gold {
+/* HARD RULE: never light/white text on yellow or light fills — always near-black */
+.btn-gold,
+a.btn-gold,
+a.btn-gold:link,
+a.btn-gold:visited,
+a.btn-gold:hover,
+a.btn-gold:active,
+a.btn-gold:focus,
+button.btn-gold {
   background: var(--yellow);
   color: var(--yellow-ink);
   box-shadow: 0 8px 22px rgba(252, 252, 100, 0.4);
 }
-.btn-gold:hover {
+.btn-gold:hover,
+a.btn-gold:hover,
+button.btn-gold:hover {
   background: #ffff7a;
+  color: var(--yellow-ink);
   box-shadow: 0 12px 28px rgba(252, 252, 100, 0.5);
 }
 .btn-call {
@@ -659,6 +670,21 @@ blockquote footer { margin-top: 1rem; color: var(--muted); font-size: 0.85rem; }
 .site-footer h2 { color: var(--yellow); }
 .site-footer a { color: rgba(255, 255, 255, 0.9); }
 .site-footer a:hover { color: var(--yellow); }
+/* Footer link color must not bleach yellow CTAs to white-on-yellow */
+.site-footer a.btn-gold,
+.site-footer a.btn-gold:link,
+.site-footer a.btn-gold:visited,
+.site-footer a.btn-gold:hover,
+.site-footer a.btn-gold:active,
+.site-footer a.btn-gold:focus {
+  color: var(--yellow-ink);
+  background: var(--yellow);
+}
+.site-footer a.btn-gold:hover,
+.site-footer a.btn-gold:focus {
+  background: #ffff7a;
+  color: var(--yellow-ink);
+}
 .footer-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1.2fr 0.8fr;
@@ -708,7 +734,11 @@ blockquote footer { margin-top: 1rem; color: var(--muted); font-size: 0.85rem; }
   padding: 0.8rem;
   border-radius: 10px;
 }
-.mobile-bar a.ghost {
+.mobile-bar a.ghost,
+.mobile-bar a.ghost:link,
+.mobile-bar a.ghost:visited,
+.mobile-bar a.ghost:hover,
+.mobile-bar a.ghost:active {
   background: var(--yellow);
   color: var(--yellow-ink);
   border: 1px solid transparent;
