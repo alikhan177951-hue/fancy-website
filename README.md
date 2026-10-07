@@ -7,17 +7,31 @@ Owner-operator David. Contacts and services from the live brief — nothing inve
 ## Stack
 
 - Vite + React (`base: /bobcatbob/`)
-- Framer Motion — scroll-driven tipper animation (`useScroll` / `useTransform`), section reveals
-- Brand palette from the DB logo: blue `#0064d8` + yellow `#fcfc64` (dark text on yellow CTAs)
+- Framer Motion — scroll-scrubbed Mixkit video hero (`useScroll` → `video.currentTime` + crossfade)
+- Brand palette from the DB logo: blue `#0064d8` + yellow `#fcfc64` (dark text `#0b1a2e` on yellow CTAs)
+
+## Hero (realistic video, not SVG)
+
+Sticky full-bleed construction footage scrubbed as you scroll:
+
+| Beat | Progress | Clip |
+|------|----------|------|
+| Enter | 0–20% | `truck-enter-45816.mp4` |
+| Scoop / load | 20–50% | `scoop-load-49189.mp4` |
+| Tip / unload | 50–80% | `unload-dump-10327.mp4` |
+| Settle + CTA | 80–100% | hold dump + Call / Get a quote |
+
+Assets live in `public/videos/` under the **Mixkit Free Stock Video License** (commercial OK). Details: [`public/videos/LICENSE.md`](public/videos/LICENSE.md).
+
+Do **not** reintroduce a cartoon SVG tipper for this hero.
 
 ## Page sections
 
-1. **Hero** — brand logo, headline, one Call CTA + Get a quote
-2. **Tipper scroll anim** — sticky SVG tipper scoops soil then tips as you scroll
-3. **Services** — compact list
-4. **About / areas** — short owner blurb + western Melbourne tags
-5. **Quote form** — lead gen + Call CTA
-6. **Footer**
+1. **Hero + scroll video** — brand, headline, one yellow Call + Get a quote
+2. **Services** — compact list
+3. **About / areas** — short owner blurb + western Melbourne tags
+4. **Quote form** — lead gen + Call CTA
+5. **Footer** — no floating duplicate Call
 
 ## Deploy
 
