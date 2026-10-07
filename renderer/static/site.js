@@ -6,6 +6,8 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var LEAD_TO = "dbbobcat@optusnet.com.au";
 
+  document.documentElement.classList.add(reduceMotion ? "motion-off" : "motion-on");
+
   function onScroll() {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -26,7 +28,7 @@
     });
   }
 
-  /* Scroll reveals — IntersectionObserver, staggered via CSS vars */
+  /* Scroll reveals — fire early so motion is obvious while scrolling */
   var revealEls = document.querySelectorAll("[data-reveal]");
   if (revealEls.length) {
     if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -40,10 +42,21 @@
             io.unobserve(entry.target);
           });
         },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+        { rootMargin: "0px 0px -4% 0px", threshold: 0.08 },
       );
       revealEls.forEach(function (el) { io.observe(el); });
     }
+  }
+
+  /* Restart CSS entrances after paint so they always run (not skipped on cache) */
+  if (!reduceMotion) {
+    requestAnimationFrame(function () {
+      document.querySelectorAll("[data-brand-in], [data-hero-in]").forEach(function (el) {
+        el.style.animation = "none";
+        void el.offsetWidth;
+        el.style.animation = "";
+      });
+    });
   }
 
   /* Lead forms → mailto (static hosting, no backend) */
