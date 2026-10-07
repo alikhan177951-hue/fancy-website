@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /charlies-bobcat-tipper/
+
+Sitemap: https://kaamtasker.com/charlies-bobcat-tipper/sitemap.xml
