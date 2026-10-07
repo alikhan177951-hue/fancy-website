@@ -1,43 +1,31 @@
 # DB Bobcat and Tipper Hire
 
-Premium rebuild of [dbbobcatandtipperhire.com.au](https://dbbobcatandtipperhire.com.au) for hosting at **https://kaamtasker.com/bobcatbob/**.
+Reel-quality rebuild of [dbbobcatandtipperhire.com.au](https://dbbobcatandtipperhire.com.au) for **https://kaamtasker.com/bobcatbob/**.
 
-Owner-operator David. Contacts, services, process, areas, Google review quotes, and job photos come from the 2026-10-07 scrape / BRIEF — nothing invented.
+Stack: **Vite + React + Tailwind CSS + Framer Motion**. Contacts, services, process, areas, reviews, and photos come from the 2026-10-07 scrape / BRIEF — nothing invented.
 
-## What to upload
+## Deploy to `/bobcatbob/`
 
-SFTP the contents of `dist/` into `public_html/kaamtasker.com/bobcatbob/`.
+1. `npm install`
+2. `npm run build`
+3. SFTP **the contents of `dist/`** (not the folder itself) into `public_html/kaamtasker.com/bobcatbob/`.
 
-Assets are prefixed `/bobcatbob/`. Rebuild with:
+The Vite `base` is `/bobcatbob/`. Asset URLs, the canonical, and `.htaccess` assume that subpath. Do not upload into the agency root, `/api/`, or marketplace trees.
 
-```bash
-npm run build
-```
-
-Local preview (serves `dist/` at the production subpath):
+Local preview (same subpath as production):
 
 ```bash
-npm run preview
-# http://127.0.0.1:4173/bobcatbob/
+npm run dev      # http://127.0.0.1:5173/bobcatbob/
+npm run preview  # http://127.0.0.1:4173/bobcatbob/
 ```
 
-## SiteMD
+## Brand facts (locked)
 
-Content and settings live in `sitemd/pages/` and `sitemd/settings/`. Theme tokens are darkened in `sitemd/theme/styles.css`.
+- **DB Bobcat and Tipper Hire** — owner-operator David
+- Phone: 0412 026 793 (`tel:+61412026793`)
+- Email: dbbobcat@optusnet.com.au
+- Address: 8 Lush Crt, Altona Meadows VIC 3028
+- Hours: Mon–Fri 9:00 am – 7:00 pm
+- Palette: logo blue `#0060D0`, yellow/gold `#F0F060` — CTAs use **dark text on yellow**, never white-on-yellow
 
-Official `sitemd deploy` / activation needs a SiteMD account. This environment has no SiteMD login, so the **committed `dist/` is produced by the trial renderer** (`renderer/build.mjs`), not the licensed CLI export.
-
-```bash
-npm run sitemd -- help
-npm run sitemd:launch   # trial preview on :4747 if the binary runs
-```
-
-## Brand facts
-
-- **DB Bobcat and Tipper Hire** — David — 0412 026 793 (`tel:+61412026793`)
-- dbbobcat@optusnet.com.au
-- 8 Lush Crt (Ct), Altona Meadows VIC 3028
-- ABN 53 138 642 412 / ACN 138 642 412
-- Hours: Maps Mon–Sat 8am–6pm, Sunday closed (website header still says Mon–Fri 9–7; noted on site)
-
-Wikimedia-looking `Bobcat_S650_…` stock is not used. Gallery is `a-1`–`a-17` plus on-site job photos.
+Lead form is on-page (name, phone/email, job brief) with a call-back confirmation — not mailto-only.
