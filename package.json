@@ -1,0 +1,13 @@
+{
+  "name": "bobcatbob",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DB Bobcat and Tipper Hire — SiteMD project + static renderer for kaamtasker.com/bobcatbob/",
+  "type": "module",
+  "scripts": {
+    "build": "node renderer/build.mjs",
+    "preview": "node renderer/preview.mjs",
+    "sitemd": "npx --yes @sitemd-cc/sitemd@0.2.2",
+    "sitemd:launch": "npx --yes @sitemd-cc/sitemd@0.2.2 launch"
+  }
+}
