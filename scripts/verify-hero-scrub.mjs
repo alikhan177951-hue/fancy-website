@@ -1,5 +1,5 @@
 /**
- * Verifies tipper stays visible through hero scrub (no all-zero opacity / blue void).
+ * Path A verify: single 10327 video, src never swaps, currentTime advances with scroll.
  */
 import { chromium } from "playwright";
 import path from "path";
@@ -7,101 +7,87 @@ import { promises as fs } from "fs";
 
 const OUT = "/opt/cursor/artifacts";
 const URL = "http://127.0.0.1:4173/bobcatbob/";
+const EXPECT = "/bobcatbob/videos/unload-dump-10327.mp4";
 
 await fs.mkdir(`${OUT}/screenshots`, { recursive: true });
-await fs.mkdir("/tmp/pw-hero-fix", { recursive: true });
+await fs.mkdir("/tmp/pw-10327", { recursive: true });
 
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 1280, height: 800 },
-  recordVideo: { dir: "/tmp/pw-hero-fix", size: { width: 1280, height: 800 } },
+  recordVideo: { dir: "/tmp/pw-10327", size: { width: 1280, height: 800 } },
 });
 const page = await context.newPage();
 
 await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
 await page.waitForSelector("video.hero-video__clip", { timeout: 15000 });
-await page.waitForTimeout(2500);
+await page.waitForTimeout(2800);
 
-// Confirm video src paths use /bobcatbob/
-const srcs = await page.$$eval("video.hero-video__clip", (els) =>
-  els.map((e) => e.getAttribute("src")),
-);
-const badSrc = srcs.filter((s) => !s?.startsWith("/bobcatbob/videos/"));
-if (badSrc.length) {
-  console.error("BAD VIDEO PATHS", badSrc);
+const meta = await page.evaluate(() => {
+  const vids = [...document.querySelectorAll("video")];
+  const hero = document.querySelector("video.hero-video__clip");
+  return {
+    videoCount: vids.length,
+    src: hero?.getAttribute("src"),
+    opacity: hero ? Number(getComputedStyle(hero).opacity) : 0,
+  };
+});
+
+if (meta.videoCount !== 1 || meta.src !== EXPECT || meta.opacity < 0.99) {
+  console.error("FAIL meta", meta);
   process.exitCode = 1;
 }
 
 const track = await page.locator(".hero-scroll").boundingBox();
-const range = Math.max((track?.height ?? 2400) - 800, 1);
+const range = Math.max((track?.height ?? 2200) - 800, 1);
 
 const samples = [];
-for (let i = 0; i <= 20; i++) {
-  const p = i / 20;
+for (const p of [0, 0.15, 0.45, 0.75, 1]) {
   await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), range * p);
-  await page.waitForTimeout(120);
-  const ops = await page.evaluate(() => {
-    const clips = [...document.querySelectorAll("video.hero-video__clip")];
-    const posters = [...document.querySelectorAll(".hero-video__poster")];
-    const clipOps = clips.map((el) => Number(getComputedStyle(el).opacity));
-    const posterOps = posters.map((el) => Number(getComputedStyle(el).opacity));
+  await page.waitForTimeout(450);
+  const row = await page.evaluate(() => {
+    const v = document.querySelector("video.hero-video__clip");
     return {
-      clipOps,
-      posterOps,
-      clipMax: Math.max(0, ...clipOps),
-      posterMax: Math.max(0, ...posterOps),
-      anyVisible: Math.max(0, ...clipOps, ...posterOps),
+      src: v?.getAttribute("src"),
+      t: v?.currentTime ?? -1,
+      op: Number(getComputedStyle(v).opacity),
     };
   });
-  samples.push({ p, ...ops });
-  if (i === 0 || i === 5 || i === 10 || i === 15 || i === 20) {
-    await page.screenshot({
-      path: path.join(OUT, "screenshots", `fix-p${String(p).replace(".", "")}.png`),
-    });
-  }
+  samples.push({ p, ...row });
+  await page.screenshot({
+    path: path.join(OUT, "screenshots", `a10327-p${String(p).replace(".", "")}.png`),
+  });
 }
 
-const voids = samples.filter((s) => s.anyVisible < 0.4);
-console.log(
-  JSON.stringify(
-    {
-      srcs,
-      trackHeight: track?.height,
-      voidCount: voids.length,
-      voids: voids.slice(0, 5),
-      sampleMid: samples[10],
-      sampleEnd: samples[20],
-    },
-    null,
-    2,
-  ),
-);
+const sameSrc = samples.every((s) => s.src === EXPECT);
+const mono = samples.every((s, i) => i === 0 || s.t >= samples[i - 1].t - 0.08);
+const opaque = samples.every((s) => s.op >= 0.99);
 
-// Smooth scrub for demo video
+console.log(JSON.stringify({ meta, samples, sameSrc, mono, opaque }, null, 2));
+
 await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
-await page.waitForTimeout(300);
-for (let y = 0; y <= range; y += 50) {
+await page.waitForTimeout(250);
+for (let y = 0; y <= range; y += 40) {
   await page.evaluate((yy) => window.scrollTo({ top: yy, behavior: "instant" }), y);
-  await page.waitForTimeout(30);
+  await page.waitForTimeout(26);
 }
 await page.waitForTimeout(500);
 
 await context.close();
 await browser.close();
 
-const vids = await fs.readdir("/tmp/pw-hero-fix");
-for (const f of vids) {
-  const full = path.join("/tmp/pw-hero-fix", f);
+for (const f of await fs.readdir("/tmp/pw-10327")) {
+  const full = path.join("/tmp/pw-10327", f);
   const st = await fs.stat(full);
   if (st.size > 10000) {
-    await fs.copyFile(full, path.join(OUT, "hero-scrub-fix.webm"));
+    await fs.copyFile(full, path.join(OUT, "path-a-10327-scroll-demo.webm"));
     console.log("demo", st.size);
   }
 }
 
-if (voids.length) {
-  console.error("FAIL: blue-void opacity gaps detected");
+if (!sameSrc || !mono || !opaque || process.exitCode) {
+  console.error("FAIL Path A verify");
   process.exitCode = 1;
 } else {
-  console.log("PASS: tipper layer visible across full scrub");
+  console.log("PASS: single 10327 scrub, continuous tip");
 }

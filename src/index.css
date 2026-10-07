@@ -414,9 +414,9 @@ h3 {
   color: var(--white);
 }
 
-/* Tall track = sticky stays pinned for enter→scoop→dump→settle */
+/* Tall track = sticky pin for full tip scrub (establish → tip → settle) */
 .hero-scroll {
-  height: 300vh;
+  height: 280vh;
   position: relative;
 }
 
@@ -454,9 +454,10 @@ h3 {
   z-index: 1;
 }
 
+/* Single continuous scrub video — always opaque over poster */
 .hero-video__clip {
   z-index: 2;
-  /* Opacity is driven only by Framer Motion inline styles — do NOT set opacity:0 here */
+  opacity: 1;
 }
 
 .hero-video__shade {
