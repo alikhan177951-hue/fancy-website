@@ -1,5 +1,5 @@
-# BGA Bobcat / Tipper Hire — lives under public_html/kaamtasker.com/bga-bobcat-tipper/
-# Same Namecheap host as bobcatbob. Do not overwrite /bobcatbob/, /speedy-phils-bobcat-tipper/, or /digwest-earthworks/.
+# Advance Bobcat & Tipper Hire — lives under public_html/kaamtasker.com/advance-bobcat-tipper/
+# Same Namecheap host as bobcatbob. Do not overwrite /bobcatbob/, /speedy-phils-bobcat-tipper/, /digwest-earthworks/, or /bga-bobcat-tipper/.
 
 DirectoryIndex index.html
 Options -Indexes
@@ -11,9 +11,9 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /bga-bobcat-tipper/
+  RewriteBase /advance-bobcat-tipper/
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /bga-bobcat-tipper/index.html [L]
+  RewriteRule . /advance-bobcat-tipper/index.html [L]
 </IfModule>
