@@ -20,36 +20,21 @@ export default function Hero() {
     <section className="hero" id="top" aria-label="Hero">
       <div className="hero__intro">
         <div className="wrap hero__intro-inner">
-          <motion.div className="hero__brand" {...enter(0.05)}>
-            <img
-              src={brand.logo}
-              alt="DB Bobcat and Tipper Hire"
-              width={140}
-              height={66}
-            />
-          </motion.div>
+          <motion.p className="hero__brand-name" {...enter(0.05)}>
+            {brand.name}
+          </motion.p>
 
           <motion.h1 {...enter(0.15)}>{hero.headline}</motion.h1>
           <motion.p className="lead" {...enter(0.28)}>
             {hero.support}
           </motion.p>
           <motion.div className="cta-row" {...enter(0.4)}>
-            <motion.a
-              className="btn btn--yellow"
-              href={`tel:${brand.phoneTel}`}
-              whileHover={reduce ? undefined : { scale: 1.03, y: -2 }}
-              whileTap={reduce ? undefined : { scale: 0.98 }}
-            >
+            <a className="btn btn--yellow" href={`tel:${brand.phoneTel}`}>
               Call {brand.phoneDisplay}
-            </motion.a>
-            <motion.a
-              className="btn btn--ghost-dark"
-              href="#quote"
-              whileHover={reduce ? undefined : { scale: 1.03, y: -2 }}
-              whileTap={reduce ? undefined : { scale: 0.98 }}
-            >
+            </a>
+            <a className="btn btn--ghost-dark" href="#quote">
               Get a quote
-            </motion.a>
+            </a>
           </motion.div>
         </div>
       </div>

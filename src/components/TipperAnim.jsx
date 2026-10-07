@@ -68,8 +68,8 @@ export default function TipperAnim() {
 
   const tipAngle = useTransform(
     progress,
-    [0, 0.68, 0.78, 0.9, 1],
-    [0, 0, 48, 52, 4],
+    [0, 0.66, 0.76, 0.88, 1],
+    [0, 0, 56, 58, 6],
   );
 
   const ramOpacity = useTransform(progress, [0.68, 0.82], [0.45, 1]);
@@ -83,14 +83,14 @@ export default function TipperAnim() {
 
   const dumpScale = useTransform(
     progress,
-    [0, 0.72, 0.88, 1],
-    [0.05, 0.05, 1, 1.05],
+    [0, 0.7, 0.86, 1],
+    [0.05, 0.05, 1.12, 1.15],
   );
-  const dumpOpacity = useTransform(progress, [0.7, 0.78], [0, 1]);
+  const dumpOpacity = useTransform(progress, [0.68, 0.76], [0, 1]);
 
   const streamOpacity = useTransform(
     progress,
-    [0.74, 0.78, 0.88, 0.92],
+    [0.7, 0.74, 0.86, 0.92],
     [0, 1, 1, 0],
   );
 
