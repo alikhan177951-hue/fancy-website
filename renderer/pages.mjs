@@ -14,7 +14,7 @@ import { asset, href } from "./layout.mjs";
 function serviceCards() {
   return services
     .map(
-      (s) => `<a class="svc" href="${href(`/services.html#${s.slug}`)}">
+      (s) => `<a class="svc" data-reveal href="${href(`/services.html#${s.slug}`)}">
         <div class="svc-media"><img src="${asset(`images/${s.image}`)}" alt="${s.title}" loading="lazy"></div>
         <div class="svc-body">
           <h3>${s.title}</h3>
@@ -29,11 +29,47 @@ function serviceCards() {
 function galleryItems() {
   return gallery
     .map(
-      (g, i) => `<a class="tile tile-${(i % 7) + 1}" href="${asset(`images/${g.src}`)}" data-lightbox="${g.alt}">
+      (g, i) => `<a class="tile tile-${(i % 7) + 1}" data-reveal href="${asset(`images/${g.src}`)}" data-lightbox="${g.alt}">
         <img src="${asset(`images/${g.src}`)}" alt="${g.alt}" loading="lazy">
       </a>`,
     )
     .join("");
+}
+
+/** Static lead form — opens mail client to David's inbox (works on SFTP hosting). */
+function leadForm({ id = "lead-form", compact = false } = {}) {
+  return `
+  <form class="lead-form${compact ? " lead-form--compact" : ""}" id="${id}" data-lead-form data-reveal novalidate>
+    <div class="lead-form-head">
+      <p class="kicker">Request a quote</p>
+      <h2>Tell David what the site needs.</h2>
+      <p>Name, phone, email, and a short job brief. Submits via your email app to <strong>${brand.email}</strong> — no fake login.</p>
+    </div>
+    <div class="lead-fields">
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+      </label>
+      <label class="field">
+        <span>Phone</span>
+        <input type="tel" name="phone" autocomplete="tel" required placeholder="04xx xxx xxx" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+      </label>
+      <label class="field field-full">
+        <span>Job / details</span>
+        <textarea name="details" rows="4" required placeholder="Suburb, job type (site prep, tipper, concrete…), timing"></textarea>
+      </label>
+    </div>
+    <div class="lead-actions">
+      <button class="btn btn-gold" type="submit">Send quote request</button>
+      <a class="btn btn-call" href="tel:${brand.phoneTel}">Or call ${brand.phoneDisplay}</a>
+    </div>
+    <p class="fine lead-note">Opens your mail app with the message ready for David. Prefer the phone for same-day work.</p>
+    <p class="lead-status" data-lead-status hidden role="status"></p>
+  </form>`;
 }
 
 export function homePage() {
@@ -44,14 +80,14 @@ export function homePage() {
     </div>
     <div class="hero-shade"></div>
     <div class="wrap hero-copy">
-      <p class="kicker">Altona Meadows · Owner-operated by ${brand.owner}</p>
-      <h1>Western Melbourne earthmoving, <em>without the runaround.</em></h1>
-      <p class="lede">Bobcat and tipper hire for site prep, rock and soil, concrete, small demolition, and a proper clean-up. One operator. One number.</p>
-      <div class="hero-actions">
+      <p class="kicker" data-hero-in>Altona Meadows · Owner-operated by ${brand.owner}</p>
+      <h1 data-hero-in>Western Melbourne earthmoving, <em>without the runaround.</em></h1>
+      <p class="lede" data-hero-in>Bobcat and tipper hire for site prep, rock and soil, concrete, small demolition, and a proper clean-up. One operator. One number.</p>
+      <div class="hero-actions" data-hero-in>
         <a class="btn btn-gold" href="tel:${brand.phoneTel}">Call David ${brand.phoneDisplay}</a>
-        <a class="btn btn-ghost" href="${href("/contact.html")}">Get a quote</a>
+        <a class="btn btn-ghost" href="#quote">Get a quote</a>
       </div>
-      <dl class="hero-meta">
+      <dl class="hero-meta" data-hero-in>
         <div><dt>Google</dt><dd>${brand.rating} ★ · ${brand.reviewCount}</dd></div>
         <div><dt>Hours</dt><dd>${hours.primary}</dd></div>
         <div><dt>Yard</dt><dd>8 Lush Crt, Altona Meadows</dd></div>
@@ -182,17 +218,18 @@ export function homePage() {
     </div>
   </section>
 
-  <section class="cta-band">
-    <div class="wrap cta-inner">
-      <div>
+  <section class="cta-band" id="quote">
+    <div class="wrap lead-band">
+      <div class="lead-band-copy" data-reveal>
         <p class="kicker">Estimate</p>
         <h2>Need the site moved this week?</h2>
         <p>Residential or commercial. Same-day quotes happen when the diary allows — several Google reviewers noted Dave quoting the same day and arriving the next.</p>
+        <div class="cta-actions">
+          <a class="btn btn-call" href="tel:${brand.phoneTel}">Call David ${brand.phoneDisplay}</a>
+          <a class="btn btn-outline" href="mailto:${brand.email}">${brand.email}</a>
+        </div>
       </div>
-      <div class="cta-actions">
-        <a class="btn btn-gold" href="tel:${brand.phoneTel}">Call David ${brand.phoneDisplay}</a>
-        <a class="btn btn-ghost" href="mailto:${brand.email}">${brand.email}</a>
-      </div>
+      ${leadForm({ id: "home-lead-form" })}
     </div>
   </section>
   `;
@@ -290,13 +327,13 @@ export function contactPage() {
   return `
   <section class="page-hero">
     <div class="wrap">
-      <p class="kicker">Contact</p>
-      <h1>Call David. That is the process.</h1>
-      <p class="lede">Office at 8 Lush Crt (Ct), Altona Meadows. Most of western Melbourne; outer areas on request.</p>
+      <p class="kicker" data-hero-in>Contact</p>
+      <h1 data-hero-in>Call David. That is the process.</h1>
+      <p class="lede page-lede" data-hero-in>Office at 8 Lush Crt (Ct), Altona Meadows. Most of western Melbourne; outer areas on request.</p>
     </div>
   </section>
-  <section class="contact-grid wrap">
-    <div class="contact-card">
+  <section class="contact-grid wrap" id="quote">
+    <div class="contact-card" data-reveal>
       <h2>Direct</h2>
       <p><a class="big-link" href="tel:${brand.phoneTel}">${brand.phoneDisplay}</a></p>
       <p><a href="mailto:${brand.email}">${brand.email}</a></p>
@@ -305,10 +342,11 @@ export function contactPage() {
       <p class="fine">${hours.mapsNote} ${hours.websiteNote}</p>
       <div class="hero-actions">
         <a class="btn btn-gold" href="tel:${brand.phoneTel}">Call David</a>
-        <a class="btn btn-ghost" href="mailto:${brand.email}">Email the yard</a>
+        <a class="btn btn-outline" href="mailto:${brand.email}">Email the yard</a>
       </div>
     </div>
-    <div class="map-wrap">
+    ${leadForm({ id: "contact-lead-form" })}
+    <div class="map-wrap" data-reveal>
       <iframe title="8 Lush Ct, Altona Meadows VIC 3028" src="${maps.embed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       <p class="fine"><a href="${maps.cid}">Open in Google Maps</a> · <a href="${maps.search}">Search listing</a></p>
     </div>

@@ -86,4 +86,81 @@ await writeFile(
   "utf8",
 );
 
+await writeFile(
+  join(dist, ".htaccess"),
+  `# Bobcatbob static site — lives ONLY under public_html/kaamtasker.com/bobcatbob/
+# Do not apply this file to KaamTasker app, marketing SPA root, or /api.
+
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+`,
+  "utf8",
+);
+
+await writeFile(
+  join(dist, "404.html"),
+  `<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found · ${brand.name}</title>
+    <meta name="theme-color" content="#0064d8" />
+    <link rel="canonical" href="https://kaamtasker.com${BASE}/" />
+    <style>
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+        background:
+          radial-gradient(700px 320px at 10% 0%, rgba(0, 100, 216, 0.14), transparent 55%),
+          #eef3f9;
+        color: #0f172a;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      a { color: #0064d8; font-weight: 700; }
+      .wrap { text-align: center; max-width: 28rem; }
+      .plate {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid rgba(0, 100, 216, 0.16);
+        border-radius: 12px;
+        padding: 0.4rem 0.55rem;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 2px 10px rgba(0, 58, 138, 0.12);
+      }
+      .plate img { height: 52px; width: auto; display: block; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="plate">
+        <img src="${BASE}/images/logo/logo-1.png" alt="${brand.name}" width="210" height="98" />
+      </div>
+      <p>Nothing here. <a href="${BASE}/">Back to home</a> · <a href="tel:${brand.phoneTel}">${brand.phoneDisplay}</a></p>
+    </div>
+  </body>
+</html>
+`,
+  "utf8",
+);
+
+await writeFile(
+  join(dist, "favicon.svg"),
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="${brand.name}">
+  <rect width="64" height="64" rx="12" fill="#0064d8"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#ffffff">DB</text>
+  <rect x="10" y="46" width="44" height="10" rx="2" fill="#fcfc64"/>
+</svg>
+`,
+  "utf8",
+);
+
 console.log(`Built ${pages.length} pages into dist/ with asset prefix ${BASE}/`);
