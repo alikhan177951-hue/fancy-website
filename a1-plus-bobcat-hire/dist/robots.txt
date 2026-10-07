@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /a1-plus-bobcat-hire/
+
+Sitemap: https://kaamtasker.com/a1-plus-bobcat-hire/sitemap.xml
