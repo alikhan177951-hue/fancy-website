@@ -3,6 +3,8 @@
   var toggle = document.querySelector("[data-menu-toggle]");
   var nav = document.getElementById("site-nav");
   var lightbox = document.getElementById("lightbox");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var LEAD_TO = "dbbobcat@optusnet.com.au";
 
   function onScroll() {
     if (!header) return;
@@ -23,6 +25,76 @@
       }
     });
   }
+
+  /* Scroll reveals — IntersectionObserver, staggered via CSS vars */
+  var revealEls = document.querySelectorAll("[data-reveal]");
+  if (revealEls.length) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealEls.forEach(function (el) { el.classList.add("is-in"); });
+    } else {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      );
+      revealEls.forEach(function (el) { io.observe(el); });
+    }
+  }
+
+  /* Lead forms → mailto (static hosting, no backend) */
+  function buildMailto(data) {
+    var subject = "Quote request — " + (data.name || "DB Bobcat site");
+    var body = [
+      "Name: " + data.name,
+      "Phone: " + data.phone,
+      "Email: " + data.email,
+      "",
+      "Job / details:",
+      data.details,
+      "",
+      "— Sent from kaamtasker.com/bobcatbob quote form",
+    ].join("\n");
+    return (
+      "mailto:" +
+      encodeURIComponent(LEAD_TO).replace(/%40/g, "@") +
+      "?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body)
+    );
+  }
+
+  document.querySelectorAll("[data-lead-form]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var fd = new FormData(form);
+      var data = {
+        name: String(fd.get("name") || "").trim(),
+        phone: String(fd.get("phone") || "").trim(),
+        email: String(fd.get("email") || "").trim(),
+        details: String(fd.get("details") || "").trim(),
+      };
+      var status = form.querySelector("[data-lead-status]");
+      if (!data.name || !data.phone || !data.email || !data.details) {
+        if (status) {
+          status.hidden = false;
+          status.textContent = "Please fill name, phone, email, and job details.";
+        }
+        return;
+      }
+      var href = buildMailto(data);
+      if (status) {
+        status.hidden = false;
+        status.textContent = "Opening your email app to send David the quote request…";
+      }
+      window.location.href = href;
+    });
+  });
 
   if (!lightbox) return;
   var img = lightbox.querySelector("img");

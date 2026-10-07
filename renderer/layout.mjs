@@ -79,12 +79,12 @@ export function page({
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canon}">
   <meta property="og:image" content="${SITE_URL}/images/logo/fav-1.png">
-  <meta name="theme-color" content="#0c0b09">
+  <meta name="theme-color" content="#0064d8">
   <link rel="icon" href="${asset("images/favicon/favicon.ico")}">
   <link rel="icon" type="image/png" sizes="32x32" href="${asset("images/favicon/favicon-32x32.png")}">
   <link rel="icon" type="image/png" sizes="16x16" href="${asset("images/favicon/favicon-16x16.png")}">
   <link rel="apple-touch-icon" href="${asset("images/favicon/apple-touch-icon.png")}">
-  <link rel="mask-icon" href="${asset("images/favicon/safari-pinned-tab.svg")}" color="#1d4ed8">
+  <link rel="mask-icon" href="${asset("images/favicon/safari-pinned-tab.svg")}" color="#0064d8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@1,8..60,560&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@ export function page({
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header" data-header>
     <div class="header-inner">
-      <a class="brand" href="${href("/")}">
+      <a class="brand" href="${href("/")}" data-brand-in>
         <img src="${asset("images/logo/logo-1.png")}" alt="${brand.name}" width="210" height="98">
       </a>
       <nav class="nav" id="site-nav" aria-label="Primary">
