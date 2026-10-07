@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /digwest-earthworks/
+
+Sitemap: https://kaamtasker.com/digwest-earthworks/sitemap.xml
