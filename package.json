@@ -1,13 +1,21 @@
 {
   "name": "bobcatbob",
   "private": true,
-  "version": "1.0.0",
-  "description": "DB Bobcat and Tipper Hire — SiteMD project + static renderer for kaamtasker.com/bobcatbob/",
+  "version": "2.0.0",
+  "description": "DB Bobcat and Tipper Hire — Vite + React + Framer Motion for kaamtasker.com/bobcatbob/",
   "type": "module",
   "scripts": {
-    "build": "node renderer/build.mjs",
-    "preview": "node renderer/preview.mjs",
-    "sitemd": "npx --yes @sitemd-cc/sitemd@0.2.2",
-    "sitemd:launch": "npx --yes @sitemd-cc/sitemd@0.2.2 launch"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.5"
   }
 }

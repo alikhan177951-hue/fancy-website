@@ -1,0 +1,140 @@
+import { useState } from "react";
+import { Reveal } from "./Motion";
+import { brand } from "../data";
+
+const initial = { name: "", phone: "", email: "", details: "" };
+
+export default function QuoteForm() {
+  const [form, setForm] = useState(initial);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(
+      `Quote request from ${form.name || "website visitor"}`,
+    );
+    const body = encodeURIComponent(
+      [
+        `Name: ${form.name}`,
+        `Phone: ${form.phone}`,
+        `Email: ${form.email}`,
+        "",
+        "Job details:",
+        form.details,
+      ].join("\n"),
+    );
+    window.location.href = `mailto:${brand.email}?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <section className="section" id="quote">
+      <div className="wrap quote-shell">
+        <Reveal>
+          <aside className="quote-aside">
+            <p className="eyebrow">Lead / quote</p>
+            <h2>Tell David what the site needs.</h2>
+            <p>
+              Name, phone, email, and a short job brief. Submits via your email
+              app to {brand.email} — no fake login.
+            </p>
+            <ul className="quote-aside__list">
+              <li>
+                <strong>Call</strong>
+                <a href={`tel:${brand.phoneTel}`}>{brand.phoneDisplay}</a>
+              </li>
+              <li>
+                <strong>Email</strong>
+                <a href={`mailto:${brand.email}`}>{brand.email}</a>
+              </li>
+              <li>
+                <strong>Yard</strong>
+                <span>{brand.address}</span>
+              </li>
+              <li>
+                <strong>Hours</strong>
+                <span>Mon–Sat 8am–6pm · Sunday closed</span>
+              </li>
+            </ul>
+          </aside>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <form className="quote-form" onSubmit={onSubmit} noValidate>
+            <div className="form-grid form-grid--2">
+              <div className="field">
+                <label htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={form.name}
+                  onChange={onChange}
+                  placeholder="Your name"
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="phone">Phone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  value={form.phone}
+                  onChange={onChange}
+                  placeholder="0412 …"
+                />
+              </div>
+            </div>
+
+            <div className="form-grid" style={{ marginTop: "1rem" }}>
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={form.email}
+                  onChange={onChange}
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="details">Job details</label>
+                <textarea
+                  id="details"
+                  name="details"
+                  required
+                  value={form.details}
+                  onChange={onChange}
+                  placeholder="Site address, access notes, and what needs doing…"
+                />
+              </div>
+            </div>
+
+            <div className="form-actions">
+              <button className="btn btn--yellow" type="submit">
+                Send quote request
+              </button>
+              <a className="btn btn--ghost-dark" href={`tel:${brand.phoneTel}`}>
+                Or call {brand.phoneDisplay}
+              </a>
+            </div>
+            <p className="form-note">
+              Opens your email client with the details filled in. Prefer a call?
+              David answers {brand.phoneDisplay}.
+            </p>
+          </form>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
