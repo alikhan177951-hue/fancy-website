@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /bobcatbob/
+
+Sitemap: https://kaamtasker.com/bobcatbob/sitemap.xml

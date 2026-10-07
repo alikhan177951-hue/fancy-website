@@ -1,0 +1,15 @@
+{
+  "name": "bobcatbob-homepage",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Production homepage for Bobcatbob (Deer Park VIC) — static, subpath-safe for /bobcatbob/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --base /bobcatbob/"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
