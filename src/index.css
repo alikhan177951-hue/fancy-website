@@ -416,7 +416,7 @@ h3 {
 
 /* Tall track = sticky pin for full tip scrub (establish → tip → settle) */
 .hero-scroll {
-  height: 280vh;
+  height: 320vh;
   position: relative;
 }
 
@@ -564,7 +564,7 @@ h3 {
 
 @media (max-width: 640px) {
   .hero-scroll {
-    height: 280vh;
+    height: 300vh;
   }
 
   .hero-copy {
