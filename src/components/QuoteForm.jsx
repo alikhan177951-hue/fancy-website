@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "./Motion";
 import { brand } from "../data";
 
@@ -6,6 +7,7 @@ const initial = { name: "", phone: "", email: "", details: "" };
 
 export default function QuoteForm() {
   const [form, setForm] = useState(initial);
+  const reduce = useReducedMotion();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -63,7 +65,13 @@ export default function QuoteForm() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <form className="quote-form" onSubmit={onSubmit} noValidate>
+          <motion.form
+            className="quote-form"
+            onSubmit={onSubmit}
+            noValidate
+            initial={reduce ? false : { opacity: 0.96 }}
+            whileInView={reduce ? undefined : { opacity: 1 }}
+          >
             <div className="form-grid form-grid--2">
               <div className="field">
                 <label htmlFor="name">Name</label>
@@ -121,9 +129,14 @@ export default function QuoteForm() {
             </div>
 
             <div className="form-actions">
-              <button className="btn btn--yellow" type="submit">
+              <motion.button
+                className="btn btn--yellow"
+                type="submit"
+                whileHover={reduce ? undefined : { scale: 1.03, y: -2 }}
+                whileTap={reduce ? undefined : { scale: 0.98 }}
+              >
                 Send quote request
-              </button>
+              </motion.button>
               <a className="btn btn--ghost-dark" href={`tel:${brand.phoneTel}`}>
                 Or call {brand.phoneDisplay}
               </a>
@@ -132,7 +145,7 @@ export default function QuoteForm() {
               Opens your email client with the details filled in. Prefer a call?
               David answers {brand.phoneDisplay}.
             </p>
-          </form>
+          </motion.form>
         </Reveal>
       </div>
     </section>
