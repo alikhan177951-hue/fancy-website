@@ -196,6 +196,18 @@ h3 {
   transform: translateY(-2px);
 }
 
+.btn--ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+
 .btn--ghost-dark {
   background: transparent;
   color: var(--ink);
@@ -396,97 +408,173 @@ h3 {
   }
 }
 
-/* ─── Hero + tipper scroll ─── */
+/* ─── Hero — full-bleed Mixkit scroll scrub ─── */
 .hero {
-  padding-top: var(--header-h);
+  position: relative;
+  color: var(--white);
 }
 
-.hero__intro {
+.hero-scroll {
+  height: 240vh;
+  position: relative;
+}
+
+.hero-scroll__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0a1628;
+}
+
+.hero-video__clip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.hero-video__clip--enter {
+  z-index: 1;
+  opacity: 1;
+}
+
+.hero-video__clip--scoop,
+.hero-video__clip--dump {
+  z-index: 2;
+  opacity: 0;
+}
+
+.hero-video__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 42, 92, 0.55) 0%,
+      rgba(6, 42, 92, 0.28) 38%,
+      rgba(4, 20, 44, 0.78) 100%
+    ),
+    linear-gradient(90deg, rgba(0, 71, 160, 0.35), transparent 55%);
+  pointer-events: none;
+}
+
+.hero-copy {
   position: relative;
   z-index: 2;
-  padding: clamp(1.5rem, 4vw, 2.5rem) 0 0.5rem;
-}
-
-.hero__intro-inner {
+  padding: calc(var(--header-h) + 1.5rem) 0 3.25rem;
   display: grid;
   gap: 0.85rem;
+  align-content: end;
 }
 
 .hero__brand-name {
   font-family: var(--display);
   font-weight: 900;
-  font-size: clamp(1.9rem, 5.5vw, 3.35rem);
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
   line-height: 0.92;
   letter-spacing: -0.015em;
-  color: var(--blue);
+  color: var(--yellow);
   margin: 0;
   max-width: 14ch;
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
 }
 
 .hero h1 {
-  max-width: 16ch;
-  color: var(--blue-ink);
-  font-size: clamp(1.85rem, 4.4vw, 3rem);
+  max-width: 15ch;
+  color: var(--white);
+  font-size: clamp(1.7rem, 4vw, 2.75rem);
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
 .hero .lead {
-  margin: 0.15rem 0 0.35rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 34rem;
 }
 
 .hero .cta-row {
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
 }
 
-/* Sticky scroll stage — short, not endless; full-bleed visual */
-.tipper-scroll {
-  height: 170vh;
+.hero-scroll-hint {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 2;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  pointer-events: none;
+}
+
+.hero-static {
   position: relative;
-  margin-top: 0.75rem;
-}
-
-.tipper-scroll__sticky {
-  position: sticky;
-  top: var(--header-h);
-  height: calc(100svh - var(--header-h));
+  min-height: 100svh;
   display: grid;
-  align-items: stretch;
+  align-items: end;
   overflow: hidden;
 }
 
-.tipper-stage {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, #c5d8f0 0%, #e4edf8 45%, #d2c3a4 100%);
-  border-block: 1px solid rgba(0, 100, 216, 0.1);
-}
-
-.tipper-svg {
-  display: block;
+.hero-static__media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.hero-static__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 42, 92, 0.5) 0%,
+      rgba(4, 20, 44, 0.82) 100%
+    );
+}
+
+.hero-static__copy {
+  position: relative;
+  z-index: 1;
+  padding: calc(var(--header-h) + 2rem) 0 3rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
 @media (max-width: 640px) {
-  .tipper-scroll {
-    height: 150vh;
+  .hero-scroll {
+    height: 210vh;
   }
 
-  .tipper-scroll__sticky {
-    height: min(58vh, 420px);
+  .hero-copy {
+    padding-bottom: 6.5rem;
+  }
+
+  .hero-scroll-hint {
+    left: 1rem;
+    right: auto;
+    bottom: 1rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tipper-scroll {
-    height: auto;
-  }
-
-  .tipper-scroll__sticky {
-    position: relative;
-    top: 0;
+  .hero-scroll {
     height: auto;
   }
 }
