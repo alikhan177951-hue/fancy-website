@@ -96,18 +96,18 @@ export function homePage() {
   </section>
 
   <section class="strip">
-    <div class="wrap strip-inner">
+    <div class="wrap strip-inner" data-reveal>
       <p>Site preparation → demolition → clean-up. Residential and commercial across the western suburbs.</p>
     </div>
   </section>
 
   <section class="about-band" id="about">
     <div class="wrap split">
-      <figure class="frame">
+      <figure class="frame" data-reveal>
         <img src="${asset("images/gallery/abbyy-1.jpg")}" alt="David’s bobcat and tipper plant">
         <figcaption>Locally owned · Altona Meadows VIC</figcaption>
       </figure>
-      <div>
+      <div data-reveal>
         <p class="kicker">About</p>
         <h2>David on the tools — not a call centre.</h2>
         <p>DB Bobcat and Tipper Hire is a locally owned, owner-operated excavation service. David has years in the industry and runs the job himself: site cleaning, soil and rock removal, rubbish, concrete, small demolition, and concrete cutting.</p>
@@ -120,7 +120,7 @@ export function homePage() {
 
   <section class="services" id="services">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="kicker">Eight services</p>
         <h2>What rolls through the gate.</h2>
         <p>Competitive pricing and packages to match the block. Call for hourly hire, floatage, or a fixed quote.</p>
