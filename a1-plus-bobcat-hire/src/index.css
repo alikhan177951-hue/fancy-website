@@ -895,30 +895,48 @@ h3 {
   opacity: 0.75;
 }
 
-/* Real A1 Plus logo — white plate keeps it readable on the dark open menu too */
+/* ─── A1 Plus logo (inline vector, no plate) ─── */
+.a1-logo {
+  display: block;
+  height: auto;
+  color: var(--ink);
+  overflow: visible;
+}
+
 .logo-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
 }
 
-.logo-img {
-  display: block;
-  height: 2.6rem;
-  width: auto;
-  background: #fff;
-  border-radius: 6px;
-  padding: 0.2rem 0.3rem;
-  box-shadow: 0 2px 10px rgba(10, 10, 10, 0.12);
+/* Header: ~1.38:1 mark, sized so BOBCAT HIRE stays legible next to the nav */
+.a1-logo--header {
+  width: 4.4rem;
+  transition: color 0.2s ease;
 }
 
-.logo-link .wordmark {
-  /* the real logo already reads A1 PLUS / BOBCAT HIRE */
-  display: none;
+.site-header.menu-open .a1-logo--header {
+  color: var(--white);
+}
+
+/* Hero: the logo IS the brand line, white lettering over the footage */
+.a1-logo--hero {
+  width: clamp(8.5rem, 22vw, 13rem);
+  color: var(--white);
+  margin: 0 0 1.1rem;
+  filter: drop-shadow(0 8px 26px rgba(0, 0, 0, 0.45));
+}
+
+.a1-logo--footer {
+  width: 7.5rem;
+  color: var(--white);
 }
 
 @media (min-width: 768px) {
-  .logo-img {
-    height: 3rem;
+  :root {
+    --header-h: 4.75rem;
+  }
+
+  .a1-logo--header {
+    width: 4.9rem;
   }
 }

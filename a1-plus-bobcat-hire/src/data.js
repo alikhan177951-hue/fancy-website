@@ -13,7 +13,7 @@ export const brand = {
   name: "A1 Plus Bobcat Hire",
   shortName: "A1 Plus",
   wordmarkRest: "Bobcat Hire",
-  logo: "/a1-plus-bobcat-hire/images/a1-plus-logo.png",
+  logo: "/a1-plus-bobcat-hire/brand/a1-plus-logo.svg",
   legal: "A1 Plus Bobcat Hire",
   phoneDisplay: "0405 018 819",
   phoneTel: "+61405018819",
