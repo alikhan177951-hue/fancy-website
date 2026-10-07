@@ -1,4 +1,5 @@
 import { brand, maps, nav } from "../data";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="wrap footer-grid">
         <div>
           <div className="footer-brand">
-            <span className="footer-wordmark">{brand.shortName}</span>
+            <Logo className="a1-logo--footer" title={brand.name} />
           </div>
           <p>
             Bobcat hire, site cleans, dig outs and removals from Melton

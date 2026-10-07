@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { BASE, brand, hero } from "../data";
+import Logo from "./Logo";
 
 /**
  * Path A — ONE Mixkit tipper dump, scroll-scrubbed (same pattern as Speedy Phils / Digwest).
@@ -131,7 +132,7 @@ export default function VideoHero() {
 
   const copy = (
     <>
-      <p className="hero__brand-name">{brand.shortName}</p>
+      <Logo className="a1-logo--hero" title={brand.name} />
       <h1>{hero.headline}</h1>
       <p className="lead">{hero.support}</p>
       <div className="cta-row">

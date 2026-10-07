@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { brand, nav } from "../data";
+import Logo from "./Logo";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -27,17 +28,7 @@ export default function Header() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}${open ? " menu-open" : ""}`}>
       <div className="site-header__inner">
         <a className="logo-link" href="#top" onClick={close}>
-          <img
-            className="logo-img"
-            src={brand.logo}
-            alt={brand.name}
-            width="64"
-            height="48"
-          />
-          <span className="wordmark">
-            <span>{brand.shortName}</span>
-            {brand.wordmarkRest}
-          </span>
+          <Logo className="a1-logo--header" title={brand.name} />
         </a>
 
         <nav className="nav-desktop" aria-label="Primary">
