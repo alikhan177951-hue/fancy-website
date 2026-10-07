@@ -414,8 +414,9 @@ h3 {
   color: var(--white);
 }
 
+/* Tall track = sticky stays pinned for enter→scoop→dump→settle */
 .hero-scroll {
-  height: 240vh;
+  height: 300vh;
   position: relative;
 }
 
@@ -423,18 +424,22 @@ h3 {
   position: sticky;
   top: 0;
   height: 100svh;
+  min-height: 100svh;
   overflow: hidden;
   display: grid;
   align-items: end;
+  isolation: isolate;
 }
 
 .hero-video {
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Fallback only — posters/videos must cover this; never leave it exposed */
   background: #0a1628;
 }
 
+.hero-video__poster,
 .hero-video__clip {
   position: absolute;
   inset: 0;
@@ -445,34 +450,33 @@ h3 {
   pointer-events: none;
 }
 
-.hero-video__clip--enter {
+.hero-video__poster {
   z-index: 1;
-  opacity: 1;
 }
 
-.hero-video__clip--scoop,
-.hero-video__clip--dump {
+.hero-video__clip {
   z-index: 2;
-  opacity: 0;
+  /* Opacity is driven only by Framer Motion inline styles — do NOT set opacity:0 here */
 }
 
 .hero-video__shade {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background:
     linear-gradient(
       180deg,
-      rgba(6, 42, 92, 0.55) 0%,
-      rgba(6, 42, 92, 0.28) 38%,
-      rgba(4, 20, 44, 0.78) 100%
+      rgba(6, 42, 92, 0.42) 0%,
+      rgba(6, 42, 92, 0.18) 40%,
+      rgba(4, 20, 44, 0.62) 100%
     ),
-    linear-gradient(90deg, rgba(0, 71, 160, 0.35), transparent 55%);
+    linear-gradient(90deg, rgba(0, 71, 160, 0.22), transparent 55%);
   pointer-events: none;
 }
 
 .hero-copy {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   padding: calc(var(--header-h) + 1.5rem) 0 3.25rem;
   display: grid;
   gap: 0.85rem;
@@ -512,7 +516,7 @@ h3 {
   position: absolute;
   right: 1.25rem;
   bottom: 1.25rem;
-  z-index: 2;
+  z-index: 4;
   margin: 0;
   font-size: 0.78rem;
   font-weight: 600;
@@ -559,11 +563,11 @@ h3 {
 
 @media (max-width: 640px) {
   .hero-scroll {
-    height: 210vh;
+    height: 280vh;
   }
 
   .hero-copy {
-    padding-bottom: 6.5rem;
+    padding-bottom: 4rem;
   }
 
   .hero-scroll-hint {
@@ -576,6 +580,12 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll {
     height: auto;
+  }
+
+  .hero-scroll__sticky {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
   }
 }
 
