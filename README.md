@@ -1,47 +1,71 @@
-# Bobcatbob homepage
+# Bobcatbob homepage (sitemd)
 
-Production static homepage for **Bobcatbob** (Bobcatbob Bobcat And Tipper Hire) — landscaping, excavation, bobcat & tipper hire in Deer Park VIC.
+Production homepage for **Bobcatbob** (Bobcatbob Bobcat And Tipper Hire) — landscaping, excavation, bobcat & tipper hire in Deer Park VIC.
 
-Live path (CoS upload): **https://kaamtasker.com/bobcatbob/**
+Live path after CoS upload: **https://kaamtasker.com/bobcatbob/**
 
-## Stack (sitemd fallback)
+This is a **[sitemd](https://github.com/sitemd-cc/sitemd)** project (`Elastic-2.0`). Content lives in `sitemd/pages/` and `sitemd/settings/`. Theme assets are prefixed for subdirectory hosting (`/bobcatbob/theme/...`).
 
-This repo is a sitemd + Cursor starter. **sitemd was not used for the shipped site.**
-
-- Upstream GitHub README marks sitemd as **sunsetted / archived**.
-- `npx @sitemd-cc/sitemd` still exists (`0.2.2`), but **deployable builds require a paid/activated sitemd account**. Trial mode is localhost-only and does not produce files you can drop on Namecheap.
-
-Path taken: **Vite 6 + vanilla HTML/CSS/JS**, `base: '/bobcatbob/'`, production files in `dist/`.
-
-## Preview locally
+## Scripts
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173/bobcatbob/
-npm run build        # writes dist/
-npm run preview      # http://localhost:4173/bobcatbob/
+npm run dev          # sitemd launch — http://localhost:4747 (trial / memory-only)
+npm run status       # sitemd status
+npm run pages        # list pages
+npm run validate
+npm run seo
+npm run build        # real engine runBuild() → writes dist/ when activated
+npm run build:cli    # `sitemd build` (see blocker below)
+npm run deploy       # sitemd deploy (requires paid/activated account)
 ```
 
-Open `/bobcatbob/` (not `/`) so asset paths match production.
+Activated builds are configured to emit into **`dist/`** (`sitemd/settings/build.md` → `outputDir: ../dist`) so CoS can upload that folder.
 
-## Namecheap / cPanel upload (CoS only)
+## Namecheap / cPanel (CoS SFTP only)
 
-**Upload the contents of `dist/`** into:
+Upload **contents of `dist/`** to:
 
 `public_html/kaamtasker.com/bobcatbob/`
 
-That folder only. After upload, `https://kaamtasker.com/bobcatbob/` (and `/bobcatbob/index.html`) should serve this site.
+Do **not** touch the KaamTasker app, marketing SPA root, or `/api`. Do **not** deploy to driveressentials.store. camtasker.com has no DNS (spoken “Camtasker” = KaamTasker).
 
-Do **not**:
+This repo does not include FTP credentials.
 
-- Touch KaamTasker app files, marketing SPA root, or `/api`
-- Upload into `public_html/` root
-- Deploy to driveressentials.store or any Cover My Ride path
-- Use camtasker.com (no DNS; spoken “Camtasker” = KaamTasker)
+## SiteMD generate/build — exact blockers (2026-10-07)
 
-Asset URLs are rooted at `/bobcatbob/` (Vite `base`). They will 404 if this site is placed at domain root.
+sitemd **trial (unactivated)** runs locally. **Disk output (`site/` / `dist/`) requires a paid, activated sitemd account.** Official docs: trial output is memory-only; `sitemd build` / `sitemd deploy` are activated-only.
 
-This repo does not include FTP/SSH credentials; CoS handles SFTP after the PR.
+Recorded from this environment (`@sitemd-cc/sitemd@0.2.2`, not logged in, `SITEMD_TOKEN` unset):
+
+1. **Public CLI has no `build` command**
+
+   ```text
+   $ npx sitemd build
+   Unknown command: build. Run sitemd help to see all commands.
+   ```
+
+   `runBuild()` exists in the engine (`sitemd/engine/build/index.js`) but is **not registered** in the CLI switch. `npm run build` calls `scripts/sitemd-build.js`, which invokes `runBuild()` directly.
+
+2. **Production builder refuses unauthenticated runs**
+
+   ```text
+   $ npm run build
+   Not authenticated. Run: sitemd auth login
+   ```
+
+3. **Auth / slots**
+
+   ```text
+   $ npx sitemd auth status
+   Not logged in. Run: sitemd login
+   ```
+
+   Upstream README also marks the GitHub project as **sunsetted / archived**. There is no offline build flag. Do not bypass the activation/license check.
+
+Until someone with a sitemd license runs `sitemd login` + `npm run build` (or `sitemd deploy`) in this repo, **activated HTML cannot be generated here**. The committed `dist/` is the last subpath-safe static snapshot for CoS (Vite-era export, `base: /bobcatbob/`). Replace it by running `npm run build` after activation — that command is wired to the sitemd engine.
+
+Local preview of the **sitemd** site (trial banner expected): `npm run dev` then open `http://localhost:4747`.
 
 ## Content sources (no invented inbox)
 
@@ -52,18 +76,19 @@ This repo does not include FTP/SSH credentials; CoS handles SFTP after the PR.
 | Phone | 0412 947 967 · `tel:+61412947967` (primary CTA) |
 | Hours | 06:00–18:00 daily (AussieWeb listing) |
 | Established | ~2002 (some listings 2003) |
-| About / services | Oneflare-style public directory paraphrase (see homepage) |
+| About / services | Oneflare-style public directory paraphrase on the homepage |
 | Area | Deer Park + western Melbourne suburbs listed on the page |
 | Payments | EFTPOS, cheque |
 | Brand domain | bobcatbob.com.au |
-| Email | **None found** (Oneflare / AussieWeb / AtoZ / MisterWhat as of 2026-10-07). Contact form does not post to a fake inbox. |
-| Reviews | Oneflare showed **0** — testimonials are labelled sample/demo |
+| Email | **None found** (Oneflare / AussieWeb / AtoZ / MisterWhat as of 2026-10-07). No fake inbox. |
+| Reviews | Oneflare showed **0** — testimonials labelled sample/demo |
 | Old website | http://www.bobcatbob.com.au is a broken Apache “Index of /” with empty `cgi-bin` (2020). **No project photos or email to scrape.** |
-| Gallery | Royalty-free Unsplash images, captions/alt text state they are **example styles**, not Bobcatbob job photos |
+| Gallery | Royalty-free Unsplash images, captions state **example styles**, not Bobcatbob job photos |
 
-## Repo layout
+## Layout
 
-- `index.html`, `src/` — source
-- `public/` — favicon, robots, sitemap, `.htaccess`
-- `dist/` — built static site (commit this so CoS can upload without Node)
-- `vite.config.js` — `base: '/bobcatbob/'`
+- `sitemd/pages/home.md` — homepage sections
+- `sitemd/settings/` — meta, header, footer, theme, build, deploy, SEO
+- `sitemd/theme/` — layout + CSS (asset URLs use `/bobcatbob/…`)
+- `scripts/sitemd-build.js` — production `runBuild()`
+- `dist/` — static files for `public_html/kaamtasker.com/bobcatbob/`

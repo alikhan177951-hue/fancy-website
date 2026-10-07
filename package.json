@@ -2,14 +2,24 @@
   "name": "bobcatbob-homepage",
   "private": true,
   "version": "1.0.0",
-  "description": "Production homepage for Bobcatbob (Deer Park VIC) — static, subpath-safe for /bobcatbob/",
-  "type": "module",
+  "description": "Bobcatbob homepage — sitemd project, static upload to kaamtasker.com/bobcatbob/",
+  "license": "UNLICENSED",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview --base /bobcatbob/"
+    "dev": "sitemd launch",
+    "start": "sitemd launch",
+    "preview": "sitemd launch",
+    "build": "node scripts/sitemd-build.js",
+    "build:cli": "sitemd build",
+    "deploy": "sitemd deploy",
+    "status": "sitemd status",
+    "pages": "sitemd pages",
+    "validate": "sitemd validate",
+    "seo": "sitemd seo"
   },
-  "devDependencies": {
-    "vite": "^6.3.5"
+  "dependencies": {
+    "@sitemd-cc/sitemd": "0.2.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
