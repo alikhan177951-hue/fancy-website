@@ -121,13 +121,22 @@ export function Header() {
             <motion.nav
               id="mobile-menu"
               aria-label="Mobile"
-              className="fixed inset-y-0 right-0 z-50 flex w-[min(86vw,22rem)] flex-col border-l border-white/10 bg-navy px-6 pb-8 pt-24 shadow-2xl lg:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex w-[min(86vw,22rem)] flex-col border-l border-white/10 bg-navy px-6 pb-8 pt-8 shadow-2xl lg:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 380, damping: 36 }}
             >
-              <p className="mb-6 text-xs uppercase tracking-[0.2em] text-yellow">Menu</p>
+              <div className="mb-8 flex items-center justify-between">
+                <p className="text-xs uppercase tracking-[0.2em] text-yellow">Menu</p>
+                <button
+                  type="button"
+                  className="rounded-full border border-white/15 px-3 py-1.5 text-sm text-white"
+                  onClick={() => setOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
               <div className="flex flex-col gap-1">
                 {links.map((l, i) => (
                   <motion.a

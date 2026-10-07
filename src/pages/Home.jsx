@@ -437,6 +437,9 @@ function Quote() {
     <section id="quote" className="relative overflow-hidden bg-brand py-24">
       <div className="grain opacity-30" />
       <div className="relative mx-auto grid max-w-6xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-2">
+        <div id="lead-form">
+          <LeadForm />
+        </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow">Contact</p>
           <h2 className="font-display mt-3 text-4xl text-white sm:text-5xl">Call David. Or leave the brief here.</h2>
@@ -464,7 +467,6 @@ function Quote() {
             />
           </div>
         </div>
-        <LeadForm />
       </div>
     </section>
   );

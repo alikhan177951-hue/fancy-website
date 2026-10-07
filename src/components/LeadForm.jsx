@@ -32,7 +32,7 @@ export function LeadForm({ compact = false }) {
   }
 
   return (
-    <div className={compact ? '' : 'relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8'}>
+    <div className={compact ? '' : 'relative overflow-hidden rounded-3xl border border-white/20 bg-navy/80 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8'}>
       <AnimatePresence mode="wait">
         {sent ? (
           <motion.div
