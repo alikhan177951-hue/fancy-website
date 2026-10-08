@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /tree-safe-solutions/
+
+Sitemap: https://kaamtasker.com/tree-safe-solutions/sitemap.xml
