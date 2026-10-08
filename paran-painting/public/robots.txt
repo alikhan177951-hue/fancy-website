@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kaamtasker.com/paran-painting/sitemap.xml
