@@ -14,7 +14,7 @@ import Logo from "./Logo";
  * Scroll → ONE video.currentTime (never swap src):
  *   0–15%   establish
  *   15–75%  tip / soil cascade
- *   75–100% settle + yellow Call
+ *   75–100% settle + red Call
  */
 const SRC = `${BASE}/videos/tipper-10327-scrub.mp4`;
 const POSTER = `${BASE}/videos/poster-tipper.jpg`;
@@ -136,7 +136,7 @@ export default function VideoHero() {
       <h1>{hero.headline}</h1>
       <p className="lead">{hero.support}</p>
       <div className="cta-row">
-        <a className="btn btn--yellow" href={`tel:${brand.phoneTel}`}>
+        <a className="btn btn--red" href={`tel:${brand.phoneTel}`}>
           Call {brand.phoneDisplay}
         </a>
         <a className="btn btn--ghost" href="#quote">

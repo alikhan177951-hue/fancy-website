@@ -6,13 +6,13 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="section section--tight" id="services">
+    <section className="section band band--light" id="services">
       <div className="wrap">
         <Reveal>
           <div className="services-head">
             <div>
               <p className="eyebrow">Services</p>
-              <h2>Bobcat work, done properly.</h2>
+              <h2 className="frame-heading">Bobcat work, done properly.</h2>
             </div>
             <p className="lead">
               Hourly hire or a fixed quote — call {brand.owner} on {brand.phoneDisplay}.
@@ -20,13 +20,18 @@ export default function Services() {
           </div>
         </Reveal>
 
-        <Stagger className="service-list">
-          {services.map((service) => (
+        <Stagger className="service-grid">
+          {services.map((service, i) => (
             <motion.article
               key={service.slug}
-              className="service-row"
+              className="service-card"
               variants={reduce ? undefined : staggerItem}
+              whileHover={reduce ? undefined : { y: -6 }}
+              transition={{ type: "spring", stiffness: 320, damping: 24 }}
             >
+              <span className="service-card__num" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <h3>{service.title}</h3>
               <p>{service.summary}</p>
             </motion.article>

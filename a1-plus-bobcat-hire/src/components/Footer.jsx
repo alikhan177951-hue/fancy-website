@@ -1,11 +1,29 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { brand, maps, nav } from "../data";
 import Logo from "./Logo";
 
 export default function Footer() {
+  const reduce = useReducedMotion();
+
   return (
     <footer className="site-footer">
+      <div className="footer-cta">
+        <div className="wrap footer-cta__inner">
+          <p className="footer-cta__line">
+            Need a bobcat in Melton? <span>Open 7 days.</span>
+          </p>
+          <motion.a
+            className="footer-cta__call"
+            href={`tel:${brand.phoneTel}`}
+            whileHover={reduce ? undefined : { x: 4 }}
+          >
+            Call {brand.phoneDisplay}
+          </motion.a>
+        </div>
+      </div>
+
       <div className="wrap footer-grid">
-        <div>
+        <div className="footer-brand-col">
           <div className="footer-brand">
             <Logo className="a1-logo--footer" title={brand.name} />
           </div>

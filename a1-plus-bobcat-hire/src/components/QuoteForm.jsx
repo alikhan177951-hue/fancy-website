@@ -19,7 +19,7 @@ export default function QuoteForm() {
     // Lead form SMS to mobile — pitching email is off-page only; do not invent mailto.
     const body = encodeURIComponent(
       [
-        `Quote request — J.A.Z Bobcat & Tipper Hire`,
+        `Quote request — ${brand.name}`,
         `Name: ${form.name}`,
         `Phone: ${form.phone}`,
         `Email: ${form.email}`,
@@ -32,17 +32,17 @@ export default function QuoteForm() {
   };
 
   return (
-    <section className="section section--tight" id="quote">
+    <section className="section band band--light" id="quote">
       <div className="wrap quote-shell">
         <Reveal>
           <aside className="quote-aside">
             <p className="eyebrow">Lead / quote</p>
-            <h2>Tell {brand.owner} what the job needs.</h2>
+            <h2 className="frame-heading frame-heading--light">Tell {brand.owner} what the job needs.</h2>
             <p>
               Name, phone, email, and a short job brief. Opens a text to{" "}
               {brand.phoneDisplay} — or just call.
             </p>
-            <a className="btn btn--yellow quote-aside__call" href={`tel:${brand.phoneTel}`}>
+            <a className="btn btn--red quote-aside__call" href={`tel:${brand.phoneTel}`}>
               Call {brand.phoneDisplay}
             </a>
             <ul className="quote-aside__list">
@@ -66,7 +66,7 @@ export default function QuoteForm() {
 
         <Reveal delay={0.1}>
           <motion.form
-            className="quote-form"
+            className="quote-form bracket-box"
             onSubmit={onSubmit}
             noValidate
             initial={reduce ? false : { opacity: 0.96 }}
@@ -130,7 +130,7 @@ export default function QuoteForm() {
 
             <div className="form-actions">
               <motion.button
-                className="btn btn--yellow"
+                className="btn btn--red btn--block-sm"
                 type="submit"
                 whileHover={reduce ? undefined : { scale: 1.03, y: -2 }}
                 whileTap={reduce ? undefined : { scale: 0.98 }}
