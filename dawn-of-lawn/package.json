@@ -1,0 +1,21 @@
+{
+  "name": "dawn-of-lawn",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dawn Of Lawn \u2014 Vite + React + Framer Motion for kaamtasker.com/dawn-of-lawn/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4178"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.5"
+  }
+}
