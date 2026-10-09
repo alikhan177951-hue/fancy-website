@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kaamtasker.com/every-branch-gardening/sitemap.xml

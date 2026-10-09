@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kaamtasker.com/dawn-of-lawn/sitemap.xml

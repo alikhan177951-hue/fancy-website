@@ -1,0 +1,19 @@
+# Mrsingh Lawn Mowing — lives under public_html/kaamtasker.com/mrsingh-lawn-mowing/
+# Same Namecheap host as the other demo sites. Do not overwrite any other /<slug>/ folder.
+
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /mrsingh-lawn-mowing/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /mrsingh-lawn-mowing/index.html [L]
+</IfModule>
