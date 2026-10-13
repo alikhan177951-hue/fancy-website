@@ -333,6 +333,14 @@ img.brand-logo { height: auto; }
 .ts-logo--hero.brand-logo--word { font-size: clamp(1.15rem, 2.4vw, 1.6rem); color: #fff; }
 .ts-logo--footer.brand-logo--word { font-size: 1.05rem; color: #fff; }
 .ts-logo--menu.brand-logo--word { font-size: 1.1rem; color: #fff; }
+
+/* Originality wordmark polish */
+.brand-logo__name { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+.brand-logo__name strong { color: var(--leaf-bright); margin-right: 0.12em; font-style: normal; }
+.brand-logo__name em { font-style: normal; font-weight: 700; }
+.ts-logo--header.brand-logo--word { color: #fff; }
+.site-header .brand-logo__name strong { color: var(--leaf-bright); }
+
 .fact-card { display: grid; gap: 0.5rem; align-content: start; }
 .fact-card__big { font-family: var(--display); font-size: clamp(1.8rem, 3.4vw, 2.4rem); color: var(--leaf-bright); line-height: 1; }
 
