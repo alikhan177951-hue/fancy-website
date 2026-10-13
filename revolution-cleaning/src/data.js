@@ -1,28 +1,39 @@
 export const BASE = "/revolution-cleaning";
 
 /*
- * Real data only — sources (checked 14 Oct 2026):
- * - Their site revolutioncleaning.net.au (services, Justin email, Werribee VIC 3030); Google Maps 5.0★ ~87 reviews; 36 River Run Dr from Maps listing
+ * Originality rebuild 2026-10-14 — no client logos, no scraped images, no copied marketing sentences.
+ * Facts only from public listings (checked 14 Oct 2026):
+ * - revolutioncleaning.net.au + Google Maps (Justin, Werribee address, services, 5.0★ ~87 reviews).
  * - Hero Mixkit 45040: https://mixkit.co/free-stock-video/close-up-of-a-vacuum-steam-cleaner-45040/
+ * - Wordmark + favicon monogram are original (CSS/SVG + generated PNG). Scraped logo files deleted.
  */
-export const brand = {"name": "Revolution Cleaning", "shortName": "Revolution", "legal": "Revolution Cleaning", "phoneDisplay": "0411 396 401", "phoneTel": "+61411396401", "address": "36 River Run Dr, Werribee VIC 3030", "addressShort": "Werribee", "hours": "Quotes by phone · Werribee & west", "owner": "Justin", "rating": "5.0", "reviewCount": 87};
+export const brand = {"name":"Revolution Cleaning","shortName":"Revolution","legal":"Revolution Cleaning","phoneDisplay":"0411 396 401","phoneTel":"+61411396401","address":"36 River Run Dr, Werribee VIC 3030","addressShort":"Werribee","hours":"Quotes by phone · Werribee & west","owner":"Justin","rating":"5.0","reviewCount":87};
 
 export const maps = { place: "https://www.google.com/maps/search/?api=1&query=Revolution+Cleaning+Werribee" };
 
 export const nav = [{"href": "#services", "label": "Services"}, {"href": "#about", "label": "Reviews"}, {"href": "#quote", "label": "Free quote"}];
 
-export const services = [{"slug": "carpet", "title": "Carpet Cleaning", "summary": "Residential and commercial carpet steam cleaning across Werribee and surrounds."}, {"slug": "rug", "title": "Rug Cleaning", "summary": "Area rugs cleaned so they look and smell fresh again."}, {"slug": "upholstery", "title": "Upholstery Cleaning", "summary": "Fabric and leather upholstery cleaned on site."}, {"slug": "tile", "title": "Tile & Grout Cleaning", "summary": "Tile and grout restored with professional cleaning."}, {"slug": "mattress", "title": "Mattress Cleaning", "summary": "Mattress cleaning as part of a fresher home clean."}, {"slug": "eol", "title": "End of Lease Cleaning", "summary": "Vacate cleans including carpets for bond-ready handovers."}];
+export const services = [{"slug":"carpet","title":"Carpet Cleaning","summary":"Residential and commercial carpet steam cleaning around Werribee."},{"slug":"rug","title":"Rug Cleaning","summary":"Area rugs cleaned as a booked service."},{"slug":"upholstery","title":"Upholstery Cleaning","summary":"Fabric and leather upholstery cleaned on site."},{"slug":"tile","title":"Tile & Grout Cleaning","summary":"Tile and grout cleaning for kitchens and bathrooms."},{"slug":"mattress","title":"Mattress Cleaning","summary":"Mattress cleaning available with carpet jobs."},{"slug":"eol","title":"End of Lease Cleaning","summary":"Vacate cleans that include carpets for handover."}];
 
-export const areasPrimary = ["Werribee", "Point Cook", "Hoppers Crossing"];
-export const areasWider = ["Tarneit", "Wyndham Vale", "Williams Landing", "Truganina", "Manor Lakes"];
+export const areasPrimary = ["Werribee","Point Cook","Hoppers Crossing"];
+export const areasWider = ["Tarneit","Wyndham Vale","Williams Landing","Truganina","Manor Lakes"];
 
 export const reviews = [];
-export const facts = [{"big": "87", "small": "Google reviews · 5.0★ rating"}, {"big": "West", "small": "Werribee, Point Cook & Hoppers Crossing"}, {"big": "Local", "small": "Justin answers for free quotes"}];
+export const facts = [{"big":"87","small":"Google reviews · 5.0★ rating"},{"big":"West","small":"Werribee, Point Cook & Hoppers Crossing"},{"big":"Justin","small":"Quotes on 0411 396 401"}];
 
-export const hero = {"headline": "Werribee’s carpet cleaning specialists.", "support": "Revolution Cleaning — carpets, rugs, upholstery and tile & grout across Werribee, Point Cook and Hoppers Crossing. Call Justin."};
+export const hero = {"headline":"Carpet cleaning based in Werribee.","support":"Revolution Cleaning — carpets, rugs, upholstery and tile & grout for Werribee, Point Cook and Hoppers Crossing. Call Justin on 0411 396 401."};
 export const heroRating = "5.0 on Google · ~87 reviews · Werribee";
-export const scrollHint = "Scroll to clean";
-export const copy = {"servicesHeading": "Carpet, rugs and hard floors — cleaned properly.", "servicesLead": "Professional cleaning across Melbourne’s west. Call Justin on 0411 396 401.", "aboutEyebrow": "Why Revolution", "aboutHeading": "5.0★ from local Google reviews.", "aboutLead": "Werribee-based carpet and rug cleaning built on regular local customers — free quotes from Justin.", "quoteHeading": "Hi Justin — tell him about the job.", "quoteArea": "Werribee, Point Cook & Hoppers Crossing", "detailsPlaceholder": "Suburb, carpet/rug/upholstery and preferred day…", "footerCtaLine": "Need carpets cleaned in Werribee?", "footerCtaSub": "Call Justin for a free quote.", "footerBlurb": "Carpet, rug, upholstery and tile cleaning from Werribee across Melbourne’s west.", "footerPlace": "Werribee VIC 3030"};
-export const logo = {"spec": {"header": {"type": "img", "src": "revolution-cleaning-logo.png", "w": 754, "h": 495}, "hero": {"type": "img", "src": "revolution-cleaning-logo.png", "w": 754, "h": 495}, "footer": {"type": "img", "src": "revolution-cleaning-logo.png", "w": 754, "h": 495}, "menu": {"type": "img", "src": "revolution-cleaning-logo.png", "w": 754, "h": 495}}, "word": null, "icon": null};
+export const scrollHint = "Scroll for services";
+export const copy = {"servicesHeading":"Cleaning services.","servicesLead":"Werribee and Melbourne’s west. Call Justin on 0411 396 401.","aboutEyebrow":"Local facts","aboutHeading":"5.0★ on Google from ~87 reviews.","aboutLead":"Werribee address on River Run Dr. Carpet and hard-floor cleaning for nearby western suburbs.","quoteHeading":"Message Justin for a quote.","quoteArea":"Werribee, Point Cook & Hoppers Crossing","detailsPlaceholder":"Suburb, carpet/rug/upholstery and preferred day…","footerCtaLine":"Need a Werribee clean?","footerCtaSub":"Call Justin at Revolution Cleaning.","footerBlurb":"Carpet, rug, upholstery and tile cleaning from Werribee across Melbourne’s west.","footerPlace":"Werribee VIC 3030"};
+export const logo = {
+  spec: {
+    header: { type: "word" },
+    hero: { type: "word" },
+    footer: { type: "word" },
+    menu: { type: "word" },
+  },
+  word: {"a":"Revolution","b":"Cleaning","tag":"Werribee"},
+  icon: "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M24 10v14l10 6\" fill=\"none\" stroke=\"#33b0e6\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+};
 
-export const quoteMessage = "Hi Justin, I'd like a free quote from Revolution Cleaning.";
+export const quoteMessage = "Hi Justin, I'd like a quote from Revolution Cleaning.";
