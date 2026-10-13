@@ -13,6 +13,10 @@ Options -Indexes
   RewriteEngine On
   RewriteBase /friendly-pest/
   RewriteRule ^index\.html$ - [L]
+  # Missing static assets must 404 (do not SPA-fallback scraped logo paths)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} \.(png|jpe?g|gif|webp|svg|ico|mp4|webm|pdf|map|woff2?|ttf|eot|css|js)$ [NC]
+  RewriteRule ^ - [R=404,L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /friendly-pest/index.html [L]
