@@ -7,3 +7,5 @@ dist-ssr/
 .DS_Store
 .vite/
 .artifacts/
+cloud-auth.json
+sites/
