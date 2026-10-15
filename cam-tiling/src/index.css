@@ -1,8 +1,8 @@
 /* Theme — original palette (cam-tiling) */
 :root {
   --leaf: #c45c26;
-  --leaf-bright: #e07a3a; /* CTA fill */
-  --leaf-hover: #f0945a;
+  --leaf-bright: #f5a060; /* CTA fill — contrast >= 4.5:1 on dark text */
+  --leaf-hover: #f8b680;
   --leaf-deep: #9a3f14; /* accent text on white */
   --forest: #0d3d3a;
   --forest-2: #14504c;

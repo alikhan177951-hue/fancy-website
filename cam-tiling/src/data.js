@@ -33,7 +33,7 @@ export const logo = {
     menu: { type: "word" },
   },
   word: {"a":"Cam","b":"Tiling","tag":"Deer Park"},
-  icon: "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"/><rect x=\"26\" y=\"8\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"#e07a3a\" stroke-width=\"2.6\"/><rect x=\"8\" y=\"26\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"#e07a3a\" stroke-width=\"2.6\"/><rect x=\"26\" y=\"26\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"/></svg>",
+  icon: "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"/><rect x=\"26\" y=\"8\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"#f5a060\" stroke-width=\"2.6\"/><rect x=\"8\" y=\"26\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"#f5a060\" stroke-width=\"2.6\"/><rect x=\"26\" y=\"26\" width=\"14\" height=\"14\" rx=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"/></svg>",
 };
 
 export const quoteMessage = "Hi, I'd like a quote from Cam Tiling.";
