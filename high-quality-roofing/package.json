@@ -1,0 +1,21 @@
+{
+  "name": "high-quality-roofing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "High Quality Roofing Restoration — Vite + React + Framer Motion for kaamtasker.com/high-quality-roofing/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4301"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.5"
+  }
+}
