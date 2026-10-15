@@ -1,0 +1,82 @@
+{
+  "western-region-rooftiles": {
+    "primary": "#c45c3a",
+    "accent": "#e8a06a",
+    "dark": "#2a1a14",
+    "buttonText": "#1a100c",
+    "pageBg": "#fbf6f0",
+    "media": "https://www.pexels.com/video/a-person-transporting-bricks-using-a-wheelbarrow-7983305/"
+  },
+  "high-quality-roofing": {
+    "primary": "#e85d04",
+    "accent": "#ff7a1a",
+    "dark": "#0b1c33",
+    "buttonText": "#0b1c33",
+    "pageBg": "#f5f8fc",
+    "media": "https://www.pexels.com/video/man-washing-floor-with-water-pressure-machine-6160419/"
+  },
+  "expert-roofing-wyndham": {
+    "primary": "#0d9488",
+    "accent": "#2dd4bf",
+    "dark": "#1c242c",
+    "buttonText": "#0f1a1a",
+    "pageBg": "#f4faf9",
+    "media": "https://www.pexels.com/video/roofer-working-on-roofs-13361432/"
+  },
+  "major-roofs": {
+    "primary": "#c9920a",
+    "accent": "#f0c014",
+    "dark": "#0c2340",
+    "buttonText": "#0c2340",
+    "pageBg": "#faf8f2",
+    "media": "https://www.pexels.com/video/man-washing-floor-with-water-pressure-machine-6160419/"
+  },
+  "adams-roofing": {
+    "primary": "#b87333",
+    "accent": "#d4a574",
+    "dark": "#1a2e1c",
+    "buttonText": "#1a2e1c",
+    "pageBg": "#f7f4ec",
+    "media": "https://www.pexels.com/video/roofer-working-on-roofs-13361432/"
+  },
+  "man-with-a-vac": {
+    "primary": "#84cc16",
+    "accent": "#a3e635",
+    "dark": "#0a1628",
+    "buttonText": "#0a1628",
+    "pageBg": "#f4faf0",
+    "media": "https://mixkit.co/free-stock-video/rain-water-running-into-a-gutter-20719/"
+  },
+  "tn-roof-cleaning": {
+    "primary": "#38bdf8",
+    "accent": "#7dd3fc",
+    "dark": "#1a1f24",
+    "buttonText": "#0c1220",
+    "pageBg": "#f5f9fc",
+    "media": "https://mixkit.co/free-stock-video/storm-water-running-down-a-roof-21212/"
+  },
+  "tcb-tiling": {
+    "primary": "#b8956c",
+    "accent": "#d4b896",
+    "dark": "#121212",
+    "buttonText": "#121212",
+    "pageBg": "#faf9f7",
+    "media": "https://www.pexels.com/video/a-person-is-using-a-tool-to-lay-tile-24906850/"
+  },
+  "kalsi-tiling": {
+    "primary": "#eab308",
+    "accent": "#facc15",
+    "dark": "#1e1b4b",
+    "buttonText": "#1e1b4b",
+    "pageBg": "#faf8f0",
+    "media": "https://www.pexels.com/video/laying-over-tiles-on-the-floor-6008078/"
+  },
+  "cam-tiling": {
+    "primary": "#c45c26",
+    "accent": "#f5a060",
+    "dark": "#0d3d3a",
+    "buttonText": "#0d3d3a",
+    "pageBg": "#faf6f1",
+    "media": "https://mixkit.co/free-stock-video/person-shaping-ceramic-tiles-on-a-grinder-46079/"
+  }
+}
