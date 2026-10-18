@@ -1,0 +1,82 @@
+{
+  "brb-plastering": {
+    "primary": "#b87333",
+    "accent": "#d4a574",
+    "dark": "#1a2744",
+    "buttonText": "#1a2744",
+    "pageBg": "#faf8f5",
+    "media": "https://www.pexels.com/video/man-using-skimming-spatula-on-wall-6474186/"
+  },
+  "all-cracked-walls": {
+    "primary": "#c47a1a",
+    "accent": "#e8a84a",
+    "dark": "#0f3d3a",
+    "buttonText": "#0f3d3a",
+    "pageBg": "#f7faf8",
+    "media": "https://www.pexels.com/video/a-man-polishing-a-wall-using-a-drywall-sanders-6474173/"
+  },
+  "mcfarlane-plastering": {
+    "primary": "#6b8f71",
+    "accent": "#9cb89f",
+    "dark": "#1a1f1a",
+    "buttonText": "#1a1f1a",
+    "pageBg": "#f8f6f0",
+    "media": "https://www.pexels.com/video/a-man-using-drywall-stilts-6473931/"
+  },
+  "venetian-plaster-gallery": {
+    "primary": "#b8973a",
+    "accent": "#d4b45c",
+    "dark": "#0c1424",
+    "buttonText": "#0c1424",
+    "pageBg": "#f7f4ef",
+    "media": "https://mixkit.co/free-stock-video/detailed-texture-of-a-smooth-marble-surface-34488/"
+  },
+  "gazzas-handyman": {
+    "primary": "#5a9e2e",
+    "accent": "#a3e635",
+    "dark": "#1c2420",
+    "buttonText": "#1c2420",
+    "pageBg": "#f4faf0",
+    "media": "https://www.pexels.com/video/man-mowing-grass-12215822/"
+  },
+  "western-handyman": {
+    "primary": "#e6b800",
+    "accent": "#f5d000",
+    "dark": "#0a1e4a",
+    "buttonText": "#0a1e4a",
+    "pageBg": "#f5f7fc",
+    "media": "https://mixkit.co/free-stock-video/man-building-a-wooden-frame-using-a-power-drill-44858/"
+  },
+  "canrepairit": {
+    "primary": "#e6c200",
+    "accent": "#ffe600",
+    "dark": "#2a2a2a",
+    "buttonText": "#1a1a1a",
+    "pageBg": "#fafafa",
+    "media": "https://www.pexels.com/video/carpentry-tools-on-wooden-table-6789602/"
+  },
+  "top-shelf-property": {
+    "primary": "#0d9488",
+    "accent": "#2dd4bf",
+    "dark": "#1a1e22",
+    "buttonText": "#0a1210",
+    "pageBg": "#f4faf9",
+    "media": "https://www.pexels.com/video/man-washing-floor-with-water-pressure-machine-6160419/"
+  },
+  "herrings-carpentry": {
+    "primary": "#8b5a2b",
+    "accent": "#c4a574",
+    "dark": "#1a2e1c",
+    "buttonText": "#1a2e1c",
+    "pageBg": "#f8f5ee",
+    "media": "https://www.pexels.com/video/a-drilling-a-wood-8829711/"
+  },
+  "nv-property-solutions": {
+    "primary": "#c9a06e",
+    "accent": "#e0c09a",
+    "dark": "#3b1f3a",
+    "buttonText": "#2a1528",
+    "pageBg": "#faf5f7",
+    "media": "https://www.pexels.com/video/person-painting-a-wall-6473944/"
+  }
+}
