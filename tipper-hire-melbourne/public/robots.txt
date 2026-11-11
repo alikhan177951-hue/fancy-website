@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /tipper-hire-melbourne/
+
+Sitemap: https://kaamtasker.com/tipper-hire-melbourne/sitemap.xml
